@@ -29,6 +29,7 @@
         app:layout_constraintEnd_toStartOf="@id/options"
         app:layout_constraintStart_toEndOf="@id/avatar"
         app:layout_constraintTop_toTopOf="@id/avatar"
+        android:text="@string/post_head"
         tools:text="имя автора поста" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -41,6 +42,7 @@
         app:layout_constraintEnd_toEndOf="@id/author"
         app:layout_constraintStart_toStartOf="@id/author"
         app:layout_constraintTop_toBottomOf="@id/author"
+        android:text="@string/_15_04_2022"
         tools:text="15.04.2022" />
 
     <androidx.appcompat.widget.AppCompatImageButton
@@ -64,6 +66,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/header_barrier"
+        android:text="@string/seo_seo_seo_https_netolo_gy_h4b"
         tools:text="@tools:sample/lorem/random" />
 
     <androidx.constraintlayout.widget.Barrier
@@ -93,6 +96,7 @@
         app:layout_constraintBottom_toBottomOf="@id/likes"
         app:layout_constraintStart_toEndOf="@id/likes"
         app:layout_constraintTop_toTopOf="@id/likes"
+        android:text="200"
         tools:text="278" />
 
     <androidx.appcompat.widget.AppCompatImageButton
@@ -117,6 +121,7 @@
         app:layout_constraintBottom_toBottomOf="@id/share"
         app:layout_constraintStart_toEndOf="@id/share"
         app:layout_constraintTop_toTopOf="@id/share"
+        android:text="480"
         tools:text="45" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -127,6 +132,7 @@
         app:layout_constraintBottom_toBottomOf="@id/seen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/seen"
+        android:text="456"
         tools:text="456" />
 
     <androidx.appcompat.widget.AppCompatImageButton
@@ -142,4 +148,3 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
