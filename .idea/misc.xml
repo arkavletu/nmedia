@@ -3,10 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidSDK/WORK/app/src/main/res/drawable/ava.xml" value="0.1" />
         <entry key="..\:/AndroidSDK/WORK/app/src/main/res/drawable/options.xml" value="0.1795" />
         <entry key="..\:/AndroidSDK/WORK/app/src/main/res/drawable/post_avatar.xml" value="0.1875" />
-        <entry key="..\:/AndroidSDK/WORK/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/AndroidSDK/WORK/app/src/main/res/layout/post_item.xml" value="0.18" />
+        <entry key="..\:/AndroidSDK/WORK/app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="..\:/AndroidSDK/WORK/app/src/main/res/layout/post_item.xml" value="0.22" />
         <entry key="..\:/AndroidSDK/WORK/app/src/main/res/mipmap-anydpi-v26/nmedia.xml" value="0.166" />
         <entry key="..\:/AndroidSDK/WORK/app/src/main/res/mipmap-anydpi-v26/nmedia_round.xml" value="0.166" />
       </map>
