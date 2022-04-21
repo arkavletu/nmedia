@@ -62,7 +62,7 @@
         app:constraint_referenced_ids="avatar,date,options" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/text"
+        android:id="@+id/content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/header_barrier"
@@ -73,7 +73,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="text" />
+        app:constraint_referenced_ids="content" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/likes"
