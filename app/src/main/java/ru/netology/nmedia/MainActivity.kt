@@ -15,14 +15,14 @@ class MainActivity : AppCompatActivity(){
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val post = Post(1,"Vova", "Let it crash", "21.04.2022")
+        val post = Post(1,"Vova", "Let it crash", "21.04.2022",count_likes = 0)
 
         binding.render(post)
 
         binding.likes.setOnClickListener {
             post.liked = !post.liked
             binding.likes.setImageResource(getImageRes(post.liked))
-            post.count_likes = +1
+            post.count_likes = getLikesCount(post.liked)
         }
     }
 
@@ -36,5 +36,5 @@ class MainActivity : AppCompatActivity(){
 
     @DrawableRes
     private fun getImageRes(isLiked: Boolean) = if (isLiked) R.drawable.liked_24 else R.drawable.likes_24dp
-    private fun getLikesCount(likedIs: Boolean) = if(likedIs) 1 else 0
+    private fun getLikesCount(likedIs: Boolean) = if(likedIs) +1 else -1
 }
