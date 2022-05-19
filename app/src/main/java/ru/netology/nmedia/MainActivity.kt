@@ -22,8 +22,9 @@ class MainActivity : AppCompatActivity(){
         binding.likes.setOnClickListener {
             post.liked = !post.liked
             binding.likes.setImageResource(getImageRes(post.liked))
-            //post.count_likes = getSmthCounted(post, post.liked)
+            binding.countLikes.text = getSmthCounted(post, post.liked).digitToChar().toString()
         }
+
     }
 
     private fun ActivityMainBinding.render(post: Post){
@@ -36,5 +37,6 @@ class MainActivity : AppCompatActivity(){
 
     @DrawableRes
     private fun getImageRes(isLiked: Boolean) = if (isLiked) R.drawable.liked_24 else R.drawable.likes_24dp
-    private fun getSmthCounted(post: Post,likedIs: Boolean) = if(likedIs) post.count_likes +1 else post.count_likes -1
+
+    private fun getSmthCounted(post: Post,likedIs: Boolean): Int = if(likedIs) 1 else  0
 }
