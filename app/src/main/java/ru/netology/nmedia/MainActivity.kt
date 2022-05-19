@@ -15,14 +15,14 @@ class MainActivity : AppCompatActivity(){
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val post = Post(1,"Vova", "Let it crash", "21.04.2022",count_likes = 0)
+        val post = Post(1, "Vova", "Let it crash", "21.04.2022", count_likes = 0)
 
         binding.render(post)
 
         binding.likes.setOnClickListener {
             post.liked = !post.liked
             binding.likes.setImageResource(getImageRes(post.liked))
-            post.count_likes = getSmthCounted(post, post.liked)
+            //post.count_likes = getSmthCounted(post, post.liked)
         }
     }
 
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity(){
         date.text = post.date
         content.text = post.content
         likes.setImageResource(getImageRes(post.liked))
-        countLikes.text = post.count_likes.toString()
+        countLikes.text = getSmthCounted(post, post.liked).digitToChar().toString()
     }
 
     @DrawableRes
