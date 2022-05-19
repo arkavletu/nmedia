@@ -8,5 +8,5 @@ data class Post(
     var liked: Boolean = false,
     var count_likes: Int = 0,
     var shared: Boolean = false,
-    var count_reposts: Int = 0
+    var count_reposts: Int = 1
 )

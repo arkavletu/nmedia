@@ -22,12 +22,12 @@ class MainActivity : AppCompatActivity(){
         binding.likes.setOnClickListener {
             post.liked = !post.liked
             binding.likes.setImageResource(getImageRes(post.liked))
-            binding.countLikes.text = getSmthCounted(post, post.liked).digitToChar().toString()
+            binding.countLikes.text = getSmthCounted(post, post.liked).toString()
         }
         binding.share.setOnClickListener {
             post.shared = !post.shared
-            binding.countReposts.text = (post.count_reposts++).digitToChar().toString()
-        }
+            binding.countReposts.text = (post.count_reposts++).toString()//crash after 10 clicks
+        }// CHECK THE 1St DIGIT IS 0
 
     }
 
