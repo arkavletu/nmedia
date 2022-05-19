@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity(){
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val post = Post(1, "Vova", "Let it crash", "21.04.2022", count_likes = 0)
+        val post = Post(1, "Vova", "Let it crash", "21.04.2022")
 
         binding.render(post)
 
@@ -23,6 +23,10 @@ class MainActivity : AppCompatActivity(){
             post.liked = !post.liked
             binding.likes.setImageResource(getImageRes(post.liked))
             binding.countLikes.text = getSmthCounted(post, post.liked).digitToChar().toString()
+        }
+        binding.share.setOnClickListener {
+            post.shared = !post.shared
+            binding.countReposts.text = getCountRepo(post.shared).digitToChar().toString()
         }
 
     }
@@ -37,6 +41,6 @@ class MainActivity : AppCompatActivity(){
 
     @DrawableRes
     private fun getImageRes(isLiked: Boolean) = if (isLiked) R.drawable.liked_24 else R.drawable.likes_24dp
-
     private fun getSmthCounted(post: Post,likedIs: Boolean): Int = if(likedIs) 1 else  0
+    private fun getCountRepo(isShared: Boolean) = if (isShared) +1 else +0
 }
