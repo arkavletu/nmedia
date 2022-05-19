@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity(){
         }
         binding.share.setOnClickListener {
             post.shared = !post.shared
-            binding.countReposts.text = getCountRepo(post, post.shared).digitToChar().toString()
+            binding.countReposts.text = (post.count_reposts++).digitToChar().toString()
         }
 
     }
@@ -42,5 +42,5 @@ class MainActivity : AppCompatActivity(){
     @DrawableRes
     private fun getImageRes(isLiked: Boolean) = if (isLiked) R.drawable.liked_24 else R.drawable.likes_24dp
     private fun getSmthCounted(post: Post,likedIs: Boolean): Int = if(likedIs) 1 else  0
-    private fun getCountRepo(post: Post, isShared: Boolean) = if (isShared) +1 else post.count_reposts
+    //private fun getCountRepo(post: Post, isShared: Boolean) = if (isShared) +1 else post.count_reposts
 }
