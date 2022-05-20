@@ -23,12 +23,13 @@ class MainActivity : AppCompatActivity(){
         binding.likes.setOnClickListener {
             post.liked = !post.liked
             binding.likes.setImageResource(getImageRes(post.liked))
-            binding.countLikes.text = getSmthCounted(post, post.liked).toString()
+            binding.countLikes.text = getSmthCounted(post).toString()
         }
         binding.share.setOnClickListener {
             post.shared = true
-            binding.countReposts.text = (post.count_reposts++).toString()
-        }//по первому клику сумма остается 0
+            post.count_reposts++
+            binding.countReposts.text = spellCounterOfRepo(post)
+        }//сумма меняется со второго клика
 
     }
 
@@ -37,13 +38,13 @@ class MainActivity : AppCompatActivity(){
         date.text = post.date
         content.text = post.content
         likes.setImageResource(getImageRes(post.liked))
-        countLikes.text = getSmthCounted(post, post.liked).digitToChar().toString()
+        countLikes.text = getSmthCounted(post).toString()
         countReposts.text = spellCounterOfRepo(post)
     }
 
     @DrawableRes
     private fun getImageRes(isLiked: Boolean) = if (isLiked) R.drawable.liked_24 else R.drawable.likes_24dp
-    private fun getSmthCounted(post: Post,likedIs: Boolean): Int = if(likedIs) 1 else  0
+    private fun getSmthCounted(post: Post): Int = if(post.liked) 1 else  0
 
     private fun spellCounterOfRepo(post: Post):String{
         return when{
