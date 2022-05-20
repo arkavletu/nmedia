@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity(){
         }
         binding.share.setOnClickListener {
             post.shared = !post.shared
-            binding.countReposts.text = (post.count_reposts++).toString()//crash after 10 clicks
+            binding.countReposts.text = (post.count_reposts++).toString()
         }// CHECK THE 1St DIGIT IS 0
 
     }
@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity(){
         content.text = post.content
         likes.setImageResource(getImageRes(post.liked))
         countLikes.text = getSmthCounted(post, post.liked).digitToChar().toString()
+        countReposts.text = post.count_reposts.toString()
     }
 
     @DrawableRes
