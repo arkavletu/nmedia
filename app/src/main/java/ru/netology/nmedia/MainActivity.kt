@@ -26,8 +26,8 @@ class MainActivity : AppCompatActivity(){
         }
         binding.share.setOnClickListener {
             post.shared = !post.shared
-            binding.countReposts.text = (post.count_reposts++).toString()
-        }// CHECK THE 1St DIGIT IS 0
+            binding.countReposts.text = ( + post.count_reposts++).toString()
+        }//срабатывает со второго тача
 
     }
 
