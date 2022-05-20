@@ -3,4 +3,5 @@
     <dimen name="common_space">16dp</dimen>
     <dimen name="post_avatar_size">64dp</dimen>
     <dimen name="button_text">16sp</dimen>
+
 </resources>
