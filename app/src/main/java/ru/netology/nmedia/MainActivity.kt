@@ -48,9 +48,9 @@ class MainActivity : AppCompatActivity(){
 
     private fun spellCounterOfRepo(post: Post):String{
         return when{
-            post.count_reposts >= 1000000 -> "1M"
+            post.count_reposts >= 1000000 -> "1M"//1.1
             post.count_reposts >= 10000 -> "${(post.count_reposts/10000).absoluteValue}K"
-            post.count_reposts >= 1000 ->"${post.count_reposts/1000}K"
+            post.count_reposts >= 1000 ->"${(post.count_reposts/1000).absoluteValue}K"//1.1
             else -> post.count_reposts.toString()
         }
     }
