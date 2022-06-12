@@ -47,11 +47,19 @@ class MainActivity : AppCompatActivity(){
     private fun getImageRes(isLiked: Boolean) = if (isLiked) R.drawable.liked_24 else R.drawable.likes_24dp
     private fun getSmthCounted(post: Post): Int = if(post.liked) 1 else  0
 
-    private fun spellCounterOfRepo(post: Post):String{
+    private fun spellCounterOfRepo(post: Post):String{//упростить, вынести в константы или ресурсы
+        val thousand = 1000
+        val tenThousand = 10000
+        val million = 1000000
         return when{
-            post.count_reposts >= 1000000.0 -> "${(post.count_reposts/1000000.0)}M"//1.1
-            post.count_reposts >= 10000 -> "${(post.count_reposts/1000)}K" //done
-            post.count_reposts >= 1000.0 -> "${(post.count_reposts/1000.0).toBigDecimal().setScale(1, RoundingMode.DOWN).toDouble()}K"//1.1
+            post.count_reposts >= million -> "${if(post.count_reposts % million > 0)   (post.count_reposts/million).
+            toBigDecimal().setScale(1, RoundingMode.DOWN).toDouble() else (post.count_reposts/million).toInt()}M"//1.0 отбросить дробную часть
+
+            post.count_reposts >= tenThousand -> "${(post.count_reposts/thousand)}K" //done
+
+            post.count_reposts >= thousand -> "${if(post.count_reposts % thousand > 0)   (post.count_reposts/thousand).
+            toBigDecimal().setScale(1, RoundingMode.DOWN).toDouble() else (post.count_reposts/thousand).toInt()}M"//1.0 отбросить дробную часть
+
             else -> post.count_reposts.toString()//done
         }
     }
