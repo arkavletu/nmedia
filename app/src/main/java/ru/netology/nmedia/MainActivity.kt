@@ -30,11 +30,12 @@ class MainActivity : AppCompatActivity(){
             post.liked = !post.liked
             binding.likes.setImageResource(getImageRes(post.liked))
             binding.countLikes.text = getSmthCounted(post).toString()
+            post.shared = true
+            post.count_reposts++
+            binding.countReposts.text = spellCounterOfRepo(post)
         }
 //        binding.share.setOnClickListener {
-//            post.shared = true
-//            post.count_reposts++
-//            binding.countReposts.text = spellCounterOfRepo(post)
+//
 //        }//сумма меняется со второго клика
 
     }
