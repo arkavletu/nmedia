@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity(){
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val post = Post(1, "Vova", "Let it crash", "21.04.2022",count_reposts = 1999.0)
+        val post = Post(1, "Vova", "Let it crash", "21.04.2022",count_reposts = 1999)
 
         binding.render(post)
 
@@ -52,15 +52,17 @@ class MainActivity : AppCompatActivity(){
         val tenThousand = 10000
         val million = 1000000
         return when{
-            post.count_reposts >= million -> "${if(post.count_reposts % million > 0)   (post.count_reposts/million).
-            toBigDecimal().setScale(1, RoundingMode.DOWN).toDouble() else (post.count_reposts/million).toInt()}M"//1.0 отбросить дробную часть
+            post.count_reposts >= million -> "${if(post.count_reposts % million > 0) (post.count_reposts/million).
+            toBigDecimal().setScale(1, RoundingMode.DOWN).toDouble() else 
+                    (post.count_reposts/million).toInt()}M"//1.0 отбросить дробную часть
 
-            post.count_reposts >= tenThousand -> "${(post.count_reposts/thousand)}K" //done
+            post.count_reposts >= tenThousand -> "${(post.count_reposts/thousand)}K"
 
-            post.count_reposts >= thousand -> "${if(post.count_reposts % thousand > 0)   (post.count_reposts/thousand).
-            toBigDecimal().setScale(1, RoundingMode.DOWN).toDouble() else (post.count_reposts/thousand).toInt()}M"//1.0 отбросить дробную часть
+            post.count_reposts >= thousand -> "${if(post.count_reposts % thousand > 0) (post.count_reposts/thousand).
+            toBigDecimal().setScale(1, RoundingMode.DOWN).toDouble() else 
+                    (post.count_reposts/thousand).toInt()}M"//1.0 отбросить дробную часть
 
-            else -> post.count_reposts.toString()//done
+            else -> post.count_reposts.toString()
         }
     }
 }
