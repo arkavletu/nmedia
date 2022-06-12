@@ -58,10 +58,10 @@ class MainActivity : AppCompatActivity(){
 
             post.count_reposts >= tenThousand -> "${(post.count_reposts/thousand)}K"
 
-            post.count_reposts >= thousand -> "${if(post.count_reposts % thousand > 0.0) (post.count_reposts/thousand).
-            toBigDecimal().setScale(1, RoundingMode.DOWN).toDouble() else 
+            post.count_reposts >= thousand -> "${if(post.count_reposts % thousand > 0.0001) (post.count_reposts/thousand).
+            toBigDecimal().setScale(1, RoundingMode.HALF_DOWN).toDouble() else 
                     (post.count_reposts/thousand)}K"//1 и 1.0 отбросить дробную часть
-
+                 //1999 = 1.0 а должно быть 1.9
             else -> post.count_reposts.toString()
         }
     }
