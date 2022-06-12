@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity(){
         return when{
             post.count_reposts >= 1000000.0 -> String.format("%.1f","${(post.count_reposts/1000000.0)}M")//1.1
             post.count_reposts >= 10000 -> "${(post.count_reposts/1000)}K" //done
-            post.count_reposts >= 1000.0 ->"${(post.count_reposts/1000.0)}K"//1.1
+            post.count_reposts >= 1000.0 -> String.format("%.1f","${(post.count_reposts/1000.0)}K")//1.1
             else -> post.count_reposts.toString()//done
         }
     }
