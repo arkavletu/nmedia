@@ -52,15 +52,14 @@ class MainActivity : AppCompatActivity(){
         val tenThousand = 10000
         val million = 1000000
         return when{
-            post.count_reposts >= million -> "${if(post.count_reposts % million > 0.0) (post.count_reposts/million).
+            post.count_reposts >= million -> "${if(post.count_reposts % 100000 >= 10000) (post.count_reposts*0.000001).
             toBigDecimal().setScale(1, RoundingMode.DOWN).toDouble() else 
-                    (post.count_reposts/million).toInt()}M"//1.0 отбросить дробную часть
+                    (post.count_reposts/1000000)}M"//1.0 отбросить дробную часть
 
             post.count_reposts >= tenThousand -> "${(post.count_reposts/thousand)}K"
 
-            post.count_reposts >= thousand -> "${if(post.count_reposts % thousand > 0.0001) (post.count_reposts/thousand).
-            toBigDecimal().setScale(1, RoundingMode.HALF_DOWN).toDouble() else 
-                    (post.count_reposts/thousand)}K"//1 и 1.0 отбросить дробную часть
+            post.count_reposts >= thousand -> "${if(post.count_reposts % 1000 >= 100) (post.count_reposts*0.001).toBigDecimal().setScale(1, RoundingMode.DOWN).toDouble()
+            else (post.count_reposts / 1000)}K"//1 и 1.0 отбросить дробную часть
                  //1999 = 1.0 а должно быть 1.9
             else -> post.count_reposts.toString()
         }
