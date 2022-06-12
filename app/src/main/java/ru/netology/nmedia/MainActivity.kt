@@ -21,11 +21,11 @@ class MainActivity : AppCompatActivity(){
 
         binding.render(post)
 
-        binding.likes.setOnClickListener {
-            post.liked = !post.liked
-            binding.likes.setImageResource(getImageRes(post.liked))
-            binding.countLikes.text = getSmthCounted(post).toString()
-        }
+//        binding.likes.setOnClickListener {
+//            post.liked = !post.liked
+//            binding.likes.setImageResource(getImageRes(post.liked))
+//            binding.countLikes.text = getSmthCounted(post).toString()
+//        }
         binding.root.setOnClickListener{
             post.liked = !post.liked
             binding.likes.setImageResource(getImageRes(post.liked))
@@ -33,6 +33,11 @@ class MainActivity : AppCompatActivity(){
             post.shared = true
             post.count_reposts++
             binding.countReposts.text = spellCounterOfRepo(post)
+        }
+        binding.avatar.setOnClickListener {
+            post.liked = !post.liked
+            binding.likes.setImageResource(getImageRes(post.liked))
+            binding.countLikes.text = getSmthCounted(post).toString()
         }
 //        binding.share.setOnClickListener {
 //
