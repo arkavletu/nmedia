@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity(){
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val post = Post(1, "Vova", "Let it crash", "21.04.2022",count_reposts = 1199999)
+        val post = Post(1, "Vova", "Let it crash", "21.04.2022",count_reposts = 1199999.0)
 
         binding.render(post)
 
@@ -48,9 +48,9 @@ class MainActivity : AppCompatActivity(){
 
     private fun spellCounterOfRepo(post: Post):String{
         return when{
-            post.count_reposts >= 1000000.0 -> String.format("%.1f","${(post.count_reposts/1000000.0)}M")//1.1
+            post.count_reposts >= 1000000.0 -> "${(post.count_reposts/1000000.0)}M"//1.1
             post.count_reposts >= 10000 -> "${(post.count_reposts/1000)}K" //done
-            post.count_reposts >= 1000.0 -> String.format("%.1f","${(post.count_reposts/1000.0)}K")//1.1
+            post.count_reposts >= 1000.0 -> "${(post.count_reposts/1000.0)}K"//1.1
             else -> post.count_reposts.toString()//done
         }
     }
