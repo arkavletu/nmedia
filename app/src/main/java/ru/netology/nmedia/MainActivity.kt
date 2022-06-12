@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity(){
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val post = Post(1, "Vova", "Let it crash", "21.04.2022",count_reposts = 1199999)
+        val post = Post(1, "Vova", "Let it crash", "21.04.2022",count_reposts = 1999)
 
         binding.render(post)
 
