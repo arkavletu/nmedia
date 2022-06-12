@@ -53,14 +53,14 @@ class MainActivity : AppCompatActivity(){
         val million = 1000000
         return when{
             post.count_reposts >= million -> "${if(post.count_reposts % (tenThousand*10) >= tenThousand) 
-                    (post.count_reposts/million).
+                    (post.count_reposts * 0.000001).
                     toBigDecimal().setScale(1, RoundingMode.DOWN).toDouble() else 
                     (post.count_reposts/million)}M"
 
             post.count_reposts >= tenThousand -> "${(post.count_reposts/thousand)}K"
 
             post.count_reposts >= thousand -> "${if(post.count_reposts % thousand >= 100) 
-                    (post.count_reposts / thousand).
+                    (post.count_reposts * 0.001).
                     toBigDecimal().setScale(1, RoundingMode.DOWN).toDouble()
             else (post.count_reposts / thousand)}K"
 
