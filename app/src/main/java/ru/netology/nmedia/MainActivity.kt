@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import ru.netology.nmedia.databinding.ActivityMainBinding
 import java.math.RoundingMode
 import kotlin.math.absoluteValue
+import kotlin.math.pow
 
 //import kotlinx.android.synthetic.main.activity_main.*
 
@@ -51,16 +52,17 @@ class MainActivity : AppCompatActivity(){
         val thousand = 1000
         val tenThousand = 10000
         val million = 1000000
+        val multiplier = 0.001
         return when{
-            post.count_reposts >= million -> "${if(post.count_reposts % (tenThousand*10) >= tenThousand) 
-                    (post.count_reposts * 0.000001).
+            post.count_reposts >= million -> "${if(post.count_reposts % million >= tenThousand*10) 
+                    (post.count_reposts * multiplier.pow(2.0)).
                     toBigDecimal().setScale(1, RoundingMode.DOWN).toDouble() else 
                     (post.count_reposts/million)}M"
 
             post.count_reposts >= tenThousand -> "${(post.count_reposts/thousand)}K"
 
             post.count_reposts >= thousand -> "${if(post.count_reposts % thousand >= 100) 
-                    (post.count_reposts * 0.001).
+                    (post.count_reposts * multiplier).
                     toBigDecimal().setScale(1, RoundingMode.DOWN).toDouble()
             else (post.count_reposts / thousand)}K"
 
