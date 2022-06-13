@@ -25,13 +25,13 @@ class MainActivity : AppCompatActivity(){
         binding.likes.setOnClickListener {
             post.liked = !post.liked
             binding.likes.setImageResource(getImageRes(post.liked))
-            binding.countLikes.text = getSmthCounted(post).toString()
+            binding.countLikes.text = getLikesCounted(post.liked).toString()
         }
         binding.share.setOnClickListener {
             post.shared = true
             post.count_reposts++
-            binding.countReposts.text = spellCounterOfRepo(post)
-        }//сумма меняется со второго клика
+            binding.countReposts.text = spellCounterOfSmth(post.count_reposts)
+        }
 
     }
 
@@ -40,33 +40,33 @@ class MainActivity : AppCompatActivity(){
         date.text = post.date
         content.text = post.content
         likes.setImageResource(getImageRes(post.liked))
-        countLikes.text = getSmthCounted(post).toString()
-        countReposts.text = spellCounterOfRepo(post)
+        countLikes.text = getLikesCounted(post.liked).toString()
+        countReposts.text = spellCounterOfSmth(post.count_reposts)
     }
 
     @DrawableRes
     private fun getImageRes(isLiked: Boolean) = if (isLiked) R.drawable.liked_24 else R.drawable.likes_24dp
-    private fun getSmthCounted(post: Post): Int = if(post.liked) 1 else  0
+    private fun getLikesCounted(isLiked: Boolean): Int = if(isLiked) 1 else  0
 
-    private fun spellCounterOfRepo(post: Post):String{//упростить, вынести в константы или ресурсы
+    private fun spellCounterOfSmth(ammount: Int):String{//упростить, вынести в константы или ресурсы
         val thousand = 1000
         val tenThousand = 10000
         val million = 1000000
         val multiplier = 0.001
         return when{
-            post.count_reposts >= million -> "${if(post.count_reposts % million >= tenThousand*10) 
-                    (post.count_reposts * multiplier.pow(2.0)).
+            ammount >= million -> "${if(ammount % million >= tenThousand*10) 
+                    (ammount * multiplier.pow(2.0)).
                     toBigDecimal().setScale(1, RoundingMode.DOWN).toDouble() else 
-                    (post.count_reposts/million)}M"
+                    (ammount/million)}M"
 
-            post.count_reposts >= tenThousand -> "${(post.count_reposts/thousand)}K"
+            ammount >= tenThousand -> "${(ammount/thousand)}K"
 
-            post.count_reposts >= thousand -> "${if(post.count_reposts % thousand >= 100) 
-                    (post.count_reposts * multiplier).
+            ammount >= thousand -> "${if(ammount % thousand >= 100) 
+                    (ammount * multiplier).
                     toBigDecimal().setScale(1, RoundingMode.DOWN).toDouble()
-            else (post.count_reposts / thousand)}K"
+            else (ammount / thousand)}K"
 
-            else -> post.count_reposts.toString()
+            else -> ammount.toString()
         }
     }
 }
