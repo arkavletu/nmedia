@@ -48,25 +48,18 @@ class MainActivity : AppCompatActivity(){
     private fun getImageRes(isLiked: Boolean) = if (isLiked) R.drawable.liked_24 else R.drawable.likes_24dp
     private fun getLikesCounted(isLiked: Boolean): Int = if(isLiked) 1 else  0
 
-    private fun spellCounterOfSmth(ammount: Int):String{//упростить, вынести в константы или ресурсы
-        val thousand = 1000
-        val tenThousand = 10000
-        val million = 1000000
-        val multiplier = 0.001
+    private fun spellCounterOfSmth(sum: Int):String{
+        val thousand = 1000.0
+        val tenThousand = 10000.0
+        val million = 1000000.0
         return when{
-            ammount >= million -> "${if(ammount % million >= tenThousand*10) 
-                    (ammount * multiplier.pow(2.0)).
-                    toBigDecimal().setScale(1, RoundingMode.DOWN).toDouble() else 
-                    (ammount/million)}M"
-
-            ammount >= tenThousand -> "${(ammount/thousand)}K"
-
-            ammount >= thousand -> "${if(ammount % thousand >= 100) 
-                    (ammount * multiplier).
-                    toBigDecimal().setScale(1, RoundingMode.DOWN).toDouble()
-            else (ammount / thousand)}K"
-
-            else -> ammount.toString()
+            sum >= million -> "${if(sum % million > tenThousand*10) 
+                    (sum / million).toBigDecimal().setScale(1, RoundingMode.DOWN)
+                    else (sum / million).toInt()}M"
+            sum.toDouble() in thousand..million -> "${if(sum < tenThousand && sum % thousand >= 100) 
+                    (sum / thousand).toBigDecimal().setScale(1, RoundingMode.DOWN)
+                    else (sum / thousand).toInt()}K"
+            else -> sum.toString()
         }
     }
 }
