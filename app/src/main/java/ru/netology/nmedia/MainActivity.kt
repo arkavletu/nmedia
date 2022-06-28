@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity(){
         author.text = post.author
         date.text = post.date
         likes.setImageResource(if(post.liked)R.drawable.liked_24 else R.drawable.likes_24dp)
-        countLikes.text = post.count_likes.toString()
+        countLikes.text = (if(post.liked) 1 else  0).toString()
         countReposts.text = spellCounterOfSmth(post.count_reposts)
     }
 

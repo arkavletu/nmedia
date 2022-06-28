@@ -17,13 +17,14 @@ class PostRepoInMemoryImpl: PostRepo {
     override fun like() {
         val oldPost = checkNotNull(data.value){"no nullable"}
         val newPost = oldPost.copy(liked = !oldPost.liked)
-        newPost.count_likes = getLikesCounted(newPost.liked)
+       // newPost.count_likes = getLikesCounted(newPost.liked)
         data.value = newPost
     }
     override fun share(){
         val oldPost = checkNotNull(data.value){"no nullable"}
         val newPost = oldPost.copy(count_reposts = +1)
+        data.value = newPost
     }
 
-    private fun getLikesCounted(isLiked: Boolean): Int = if(isLiked) 1 else  0
+    //private fun getLikesCounted(isLiked: Boolean): Int = if(isLiked) 1 else  0
 }
