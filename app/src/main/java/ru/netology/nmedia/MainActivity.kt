@@ -26,13 +26,16 @@ class MainActivity : AppCompatActivity(){
         binding.likes.setOnClickListener {
             viewModel.likePost
         }
+        binding.share.setOnClickListener{
+            viewModel.sharePost
+        }
 
 //        binding.likes.setOnClickListener {
 //            post.liked = !post.liked
 //            binding.likes.setImageResource(getImageRes(post.liked))
 //            binding.countLikes.text = getLikesCounted(post.liked).toString()
 //        }
-//        binding.share.setOnClickListener {
+//       r {
 //            post.shared = true
 //            post.count_reposts++
 //            binding.countReposts.text = spellCounterOfSmth(post.count_reposts)

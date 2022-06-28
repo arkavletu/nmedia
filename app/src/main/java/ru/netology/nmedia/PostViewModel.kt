@@ -6,4 +6,5 @@ class PostViewModel: ViewModel() {
     private val repo: PostRepo = PostRepoInMemoryImpl()
     val data by repo::data
     val likePost = repo.like()
+    val sharePost = repo.share()
 }

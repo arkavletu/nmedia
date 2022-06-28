@@ -1,5 +1,6 @@
 package ru.netology.nmedia
 
+import androidx.annotation.DrawableRes
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
@@ -15,7 +16,15 @@ class PostRepoInMemoryImpl: PostRepo {
 
     override fun like() {
         val oldPost = checkNotNull(data.value){"not nullable"}
-        val newPost = oldPost.copy(liked = !oldPost.liked)
+        val newPost = oldPost.copy(liked = !oldPost.liked, count_likes = getLikesCounted(!oldPost.liked))
         data.value = newPost
     }
+    override fun share(){
+        val oldPost = checkNotNull(data.value){"not nullable"}
+        val newPost = oldPost.copy(count_reposts = +1)
+    }
+
+//    @DrawableRes
+//    private fun getImageRes(isLiked: Boolean) = if (isLiked) R.drawable.liked_24 else R.drawable.likes_24dp
+    private fun getLikesCounted(isLiked: Boolean): Int = if(isLiked) 1 else  0
 }
