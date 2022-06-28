@@ -5,6 +5,6 @@ import androidx.lifecycle.ViewModel
 class PostViewModel: ViewModel() {
     private val repo: PostRepo = PostRepoInMemoryImpl()
     val data by repo::data
-    val likePost = repo.like()
-    val sharePost = repo.share()
+    fun likePost() = repo.like()
+    fun sharePost() = repo.share()
 }

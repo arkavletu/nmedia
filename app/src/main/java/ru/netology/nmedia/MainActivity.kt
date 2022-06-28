@@ -24,10 +24,10 @@ class MainActivity : AppCompatActivity(){
           binding.render(post)
         }
         binding.likes.setOnClickListener {
-            viewModel.likePost
+            viewModel.likePost()
         }
         binding.share.setOnClickListener{
-            viewModel.sharePost
+            viewModel.sharePost()
         }
 
 
@@ -56,19 +56,4 @@ class MainActivity : AppCompatActivity(){
             else -> sum.toString()
         }
     }
-    //или так, наполовину сдуто из чата
-//     fun spellCounterOfRepo(sum: Int):String{
-//         val thousand = 1000
-//         val tenThousand = 10000
-//         val million = 1000000
-//         return when{
-//             sum >= million -> if(sum % million > tenThousand*10) 
-//                     "${(sum / million)}.${(sum/tenThousand)%10}M"
-//                     else "${(sum / million).toInt()}M"
-//             sum in thousand..million -> if(sum < tenThousand && sum % thousand >= 100) 
-//                    "${sum/1000}.${(sum/100)%10}K"
-//             else "${(sum / thousand).toInt()}K"
-//             else -> sum.toString()
-//         }
-//     }
 }
