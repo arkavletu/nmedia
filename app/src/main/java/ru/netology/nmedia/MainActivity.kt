@@ -1,16 +1,10 @@
 package ru.netology.nmedia
 
 import android.os.Bundle
-import android.widget.ImageButton
 import androidx.activity.viewModels
-import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
 import ru.netology.nmedia.databinding.ActivityMainBinding
 import java.math.RoundingMode
-import kotlin.math.absoluteValue
-import kotlin.math.pow
-
-//import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +21,7 @@ class MainActivity : AppCompatActivity(){
             viewModel.likePost()
         }
         binding.share.setOnClickListener{
-            viewModel.sharePost()
+            viewModel.sharePost()// не работает
         }
 
 

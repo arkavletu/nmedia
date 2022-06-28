@@ -21,7 +21,7 @@ class PostRepoInMemoryImpl: PostRepo {
     }
     override fun share(){
         val oldPost = checkNotNull(data.value){"no nullable"}
-        val newPost = oldPost.copy(count_reposts = oldPost.count_reposts++)
+        val newPost = oldPost.copy(count_reposts = oldPost.count_reposts + 1)
         data.value = newPost
     }
 
