@@ -30,30 +30,17 @@ class MainActivity : AppCompatActivity(){
             viewModel.sharePost
         }
 
-//        binding.likes.setOnClickListener {
-//            post.liked = !post.liked
-//            binding.likes.setImageResource(getImageRes(post.liked))
-//            binding.countLikes.text = getLikesCounted(post.liked).toString()
-//        }
-//       r {
-//            post.shared = true
-//            post.count_reposts++
-//            binding.countReposts.text = spellCounterOfSmth(post.count_reposts)
-//        }
 
     }
 
     private fun ActivityMainBinding.render(post: Post){
         author.text = post.author
         date.text = post.date
-        likes.setImageResource(getImageRes(post.liked))
-        countLikes.text = getLikesCounted(post.liked).toString()
+        likes.setImageResource(if(post.liked)R.drawable.liked_24 else R.drawable.likes_24dp)
+        countLikes.text = post.count_likes.toString()
         countReposts.text = spellCounterOfSmth(post.count_reposts)
     }
 
-    @DrawableRes
-    private fun getImageRes(isLiked: Boolean) = if (isLiked) R.drawable.liked_24 else R.drawable.likes_24dp
-    private fun getLikesCounted(isLiked: Boolean): Int = if(isLiked) 1 else  0
 
     private fun spellCounterOfSmth(sum: Int):String{
         val thousand = 1000.0
