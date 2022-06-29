@@ -5,5 +5,5 @@ import androidx.lifecycle.LiveData
 interface PostRepo {
     val data: LiveData<List<Post>>
     fun like(postId: Long)
-    //fun share()
+    fun share(postId: Long)
 }
