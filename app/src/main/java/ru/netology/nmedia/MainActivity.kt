@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity(){
             viewModel.likePost()
         }
         binding.share.setOnClickListener{
-            viewModel.sharePost()// не работает
+            viewModel.sharePost()
         }
 
 
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity(){
         author.text = post.author
         date.text = post.date
         likes.setImageResource(if(post.liked)R.drawable.liked_24 else R.drawable.likes_24dp)
-        countLikes.text = (if(post.liked) 1 else  0).toString()
+        countLikes.text = post.count_likes.toString()
         countReposts.text = spellCounterOfSmth(post.count_reposts)
     }
 
