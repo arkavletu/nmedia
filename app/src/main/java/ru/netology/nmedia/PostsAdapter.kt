@@ -8,10 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.netology.nmedia.databinding.PostBinding
 import java.math.RoundingMode
 import kotlin.properties.Delegates
-
+typealias onLikeOrShareClick = (Post) -> Unit
 internal class PostsAdapter(
-    private val likePost: (Post) -> Unit,
-    private val share: (Post) -> Unit
+    private val likePost: onLikeOrShareClick,
+    private val share: onLikeOrShareClick
 ) : ListAdapter<Post, PostsAdapter.ViewHolder>(DiffSearcher) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
