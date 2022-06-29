@@ -16,8 +16,8 @@ class PostRepoInMemoryImpl: PostRepo {
 
     override fun like() {
         val oldPost = checkNotNull(data.value){"no nullable"}
-        val newPost = oldPost.copy(liked = !oldPost.liked, count_likes = if(oldPost.liked) 1 else  0)
-        data.value = newPost
+        val newPost = oldPost.copy(liked = !oldPost.liked)
+        data.value = newPost.copy(count_likes = if(newPost.liked) 1 else  0)
     }
     override fun share(){
         val oldPost = checkNotNull(data.value){"no nullable"}
