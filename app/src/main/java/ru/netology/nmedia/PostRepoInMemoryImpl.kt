@@ -34,4 +34,8 @@ class PostRepoInMemoryImpl : PostRepo {
 
     }
 
+    override fun delete(postId: Long) {
+        data.value = posts.filter { it.id != postId }
+    }
+
 }

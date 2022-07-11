@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity(){
         setContentView(binding.root)
 
 
-        val adapter = PostsAdapter(viewModel::likePost, viewModel::sharePost)
+        val adapter = PostsAdapter(viewModel)
         binding.postRecyclerView.adapter = adapter
         viewModel.data.observe(this){posts ->
             adapter.submitList(posts)
