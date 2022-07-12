@@ -17,9 +17,23 @@ class MainActivity : AppCompatActivity(){
 
 
         val adapter = PostsAdapter(viewModel)
-        binding.postRecyclerView.adapter = adapter
+        binding.list.adapter = adapter
         viewModel.data.observe(this){posts ->
             adapter.submitList(posts)
         }
+
+        binding.save.setOnClickListener {
+            with(binding.content) {
+                val content = text.toString()
+                viewModel.onSaveClicked(content)
+                clearFocus()
+                hideKeyboard()
+
+            }
+        }
+        viewModel.currentPost.observe(this){
+            currentPost -> binding.content.setText(currentPost?.content)
+        }
+//SingleLifeEvent for scroll
     }
 }
