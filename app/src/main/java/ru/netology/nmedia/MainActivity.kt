@@ -26,13 +26,24 @@ class MainActivity : AppCompatActivity(){
             with(binding.content) {
                 val content = text.toString()
                 viewModel.onSaveClicked(content)
-                clearFocus()
-                hideKeyboard()
+//                clearFocus()
+//                hideKeyboard()
 
             }
         }
-        viewModel.currentPost.observe(this){
-            currentPost -> binding.content.setText(currentPost?.content)
+        viewModel.currentPost.observe(this){ currentPost ->
+            with(binding.content) {
+                val content = currentPost?.content
+                setText(content)
+                if(content != null) {
+                    requestFocus()
+                    showKeyboard()
+                }
+                else {
+                    clearFocus()
+                    hideKeyboard()
+                }
+            }
         }
 //SingleLifeEvent for scroll
     }

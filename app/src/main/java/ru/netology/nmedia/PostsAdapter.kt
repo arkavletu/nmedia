@@ -67,6 +67,7 @@ internal class PostsAdapter(
             with(binding)
             {
                 author.text = post.author
+                content.text = post.content
                 date.text = post.date
                 likes.setImageResource(if (post.liked) R.drawable.liked_24 else R.drawable.likes_24dp)
                 countLikes.text = post.count_likes.toString()// spellCounterOfSmth(post.count_likes)
