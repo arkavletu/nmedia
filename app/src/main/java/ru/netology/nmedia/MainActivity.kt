@@ -1,6 +1,7 @@
 package ru.netology.nmedia
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import ru.netology.nmedia.databinding.ActivityMainBinding
@@ -36,6 +37,7 @@ class MainActivity : AppCompatActivity(){
                 val content = currentPost?.content
                 setText(content)
                 if(content != null) {
+                    binding.group.visibility = View.VISIBLE
                     requestFocus()
                     showKeyboard()
                 }

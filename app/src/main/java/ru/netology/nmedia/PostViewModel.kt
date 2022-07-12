@@ -35,8 +35,13 @@ class PostViewModel: ViewModel(), PostActionListener {
         repo.delete(post.id)
 
     override fun onEditClicked(post: Post) {
+
         currentPost.value = post
 
+    }
+
+    override fun onCanselClicked(post: Post) {
+        currentPost.value = null
     }
 
 
