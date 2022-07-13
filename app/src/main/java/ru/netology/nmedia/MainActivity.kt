@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity(){
                 hideKeyboard()
                 binding.group.visibility = View.GONE
                 viewModel.onCanselClicked()
+                binding.canselText.text.clear()//check стереть все
             }
         }
         viewModel.currentPost.observe(this){ currentPost ->
@@ -47,14 +48,14 @@ class MainActivity : AppCompatActivity(){
                 setText(content)
                 if(content != null) {
                     binding.group.visibility = View.VISIBLE
-                    binding.canselText.text.append("Change post ${currentPost.id}")
+                    binding.canselText.text.append("Change post ${currentPost.id}")//верхнее поле должно быть непрозрачным
                     requestFocus()
                     showKeyboard()
                 }
                 else {
                     clearFocus()
                     hideKeyboard()
-                    binding.group.visibility = View.GONE
+                    binding.group.visibility = View.GONE//но 1 элемент мне нужен
                 }
             }
         }
