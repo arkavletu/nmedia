@@ -40,8 +40,9 @@ class PostViewModel: ViewModel(), PostActionListener {
 
     }
 
-    override fun onCanselClicked(post: Post) {
+    fun onCanselClicked() {
         currentPost.value = null
+
     }
 
 

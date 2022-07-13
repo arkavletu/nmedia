@@ -44,6 +44,8 @@ class PostRepoInMemoryImpl : PostRepo {
         if(post.id == PostRepo.NEWPOSTID) insert(post) else update(post)
     }
 
+
+
     private fun update(post: Post) {
         data.value = posts.map{
             if (it.id == post.id) post else it

@@ -8,6 +8,7 @@ interface PostRepo {
     fun share(postId: Long)
     fun delete(postId: Long)
     fun save(post: Post)
+   // fun cansel(post: Post)
 
     companion object{
         const val NEWPOSTID = 0L

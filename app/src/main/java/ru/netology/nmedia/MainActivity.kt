@@ -32,18 +32,29 @@ class MainActivity : AppCompatActivity(){
 
             }
         }
+
+        binding.canselButton.setOnClickListener {
+            with(binding.content){
+                clearFocus()
+                hideKeyboard()
+                binding.group.visibility = View.GONE
+                viewModel.onCanselClicked()
+            }
+        }
         viewModel.currentPost.observe(this){ currentPost ->
             with(binding.content) {
                 val content = currentPost?.content
                 setText(content)
                 if(content != null) {
                     binding.group.visibility = View.VISIBLE
+                    binding.canselText.text.append("Change post ${currentPost.id}")
                     requestFocus()
                     showKeyboard()
                 }
                 else {
                     clearFocus()
                     hideKeyboard()
+                    binding.group.visibility = View.GONE
                 }
             }
         }
