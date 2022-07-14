@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.component2
 import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.databinding.PostBinding
 import java.math.RoundingMode
@@ -15,8 +16,8 @@ class MainActivity : AppCompatActivity(){
 
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.content.visibility = View.VISIBLE
-        binding.save.visibility = View.VISIBLE
+        binding.group.visibility = View.VISIBLE
+//        binding.save.visibility = View.VISIBLE// не видать
 
 
         val adapter = PostsAdapter(viewModel)
