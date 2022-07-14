@@ -16,8 +16,8 @@ class MainActivity : AppCompatActivity(){
 
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.group.visibility = View.VISIBLE
-//        binding.save.visibility = View.VISIBLE// не видать
+        binding.group.findViewById<View>(R.id.content).visibility = View.VISIBLE
+        binding.group.findViewById<View>(R.id.save).visibility = View.VISIBLE
 
 
         val adapter = PostsAdapter(viewModel)
