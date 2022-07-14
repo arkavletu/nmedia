@@ -15,6 +15,8 @@ class MainActivity : AppCompatActivity(){
 
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.content.visibility = View.VISIBLE
+        binding.save.visibility = View.VISIBLE
 
 
         val adapter = PostsAdapter(viewModel)
@@ -27,6 +29,7 @@ class MainActivity : AppCompatActivity(){
             with(binding.content) {
                 val content = text.toString()
                 viewModel.onSaveClicked(content)
+                binding.canselText.text.clear()
 //                clearFocus()
 //                hideKeyboard()
 
