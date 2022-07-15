@@ -54,7 +54,7 @@
         app:layout_constraintTop_toBottomOf="@id/toolsTop"
         app:layout_constraintVertical_bias="1.0"
         tools:text="Editing message"
-        android:visibility="visible"
+        android:visibility="gone"
         />
     <ImageButton
         android:id="@+id/canselButton"
@@ -67,7 +67,7 @@
         app:layout_constraintStart_toEndOf="@id/content"
         app:layout_constraintBottom_toBottomOf="@+id/canselText"
         app:srcCompat="@drawable/ic_baseline_cancel_24"
-        android:visibility="visible"
+        android:visibility="gone"
         />
     <ImageButton
         android:id="@+id/save"
@@ -89,5 +89,5 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:visibility="visible"
-        app:constraint_referenced_ids="save,content,canselText,canselButton" />
+        app:constraint_referenced_ids="canselText,canselButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>
