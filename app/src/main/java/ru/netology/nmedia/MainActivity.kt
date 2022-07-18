@@ -5,6 +5,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.component2
+import androidx.lifecycle.Observer
 import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.databinding.PostBinding
 import java.math.RoundingMode
@@ -30,9 +31,6 @@ class MainActivity : AppCompatActivity(){
                 val content = text.toString()
                 viewModel.onSaveClicked(content)
                 binding.canselText.text = ""
-//                clearFocus()
-//                hideKeyboard()
-
             }
         }
 
@@ -42,7 +40,7 @@ class MainActivity : AppCompatActivity(){
                 hideKeyboard()
                 binding.group.visibility = View.GONE
                 viewModel.onCanselClicked()
-                binding.canselText.text = ""//check стереть все
+                binding.canselText.text = ""
             }
         }
         viewModel.currentPost.observe(this){ currentPost ->
@@ -51,17 +49,18 @@ class MainActivity : AppCompatActivity(){
                 setText(content)
                 if(content != null) {
                     binding.group.visibility = View.VISIBLE
-                    binding.canselText.text = "${currentPost.id}"//верхнее поле должно быть непрозрачным
+                    binding.canselText.text = "${currentPost.id}"
                     requestFocus()
                     showKeyboard()
                 }
                 else {
                     clearFocus()
                     hideKeyboard()
-                    binding.group.visibility = View.GONE//но 1 элемент мне нужен
+                    binding.group.visibility = View.GONE
                 }
             }
         }
-//SingleLifeEvent for scroll
+
+        viewModel.getUploadData().observe(this, Observer<Post>{} )
     }
 }
