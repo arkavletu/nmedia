@@ -15,7 +15,7 @@
         app:layout_constraintBottom_toTopOf="@id/toolsTop"
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/post"
-        android:gravity="top"/>
+        android:gravity="bottom"/>
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/toolsTop"
