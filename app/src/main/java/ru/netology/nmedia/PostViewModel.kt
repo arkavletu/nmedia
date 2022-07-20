@@ -45,10 +45,7 @@ class PostViewModel: ViewModel(), PostActionListener {
 
     }
 
-    private val uploadData = SingleLiveEvent<Post>()
-    fun getUploadData(): SingleLiveEvent<Post> {
-        return uploadData
-    }
+
 
 
 }

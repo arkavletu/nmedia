@@ -5,5 +5,4 @@ interface PostActionListener {
     fun onShareClicked(post: Post)
     fun onDeleteClicked(post: Post)
     fun onEditClicked(post: Post)
-    //fun onCanselClicked(post: Post)
 }

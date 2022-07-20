@@ -4,11 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.graphics.component2
-import androidx.lifecycle.Observer
 import ru.netology.nmedia.databinding.ActivityMainBinding
-import ru.netology.nmedia.databinding.PostBinding
-import java.math.RoundingMode
 
 class MainActivity : AppCompatActivity(){
     val viewModel by viewModels<PostViewModel>()
@@ -61,6 +57,6 @@ class MainActivity : AppCompatActivity(){
             }
         }
 
-        viewModel.getUploadData().observe(this, Observer<Post>{} )
+
     }
 }

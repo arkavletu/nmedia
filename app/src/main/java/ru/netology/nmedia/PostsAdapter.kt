@@ -11,8 +11,7 @@ import java.math.RoundingMode
 import kotlin.properties.Delegates
 
 internal class PostsAdapter(
-//    private val likePost: onLikeOrShareClick,
-//    private val share: onLikeOrShareClick
+
     private val actionListener: PostActionListener
 ) : ListAdapter<Post, PostsAdapter.ViewHolder>(DiffSearcher) {
 
