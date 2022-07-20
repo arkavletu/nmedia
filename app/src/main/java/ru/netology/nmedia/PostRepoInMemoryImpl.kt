@@ -13,7 +13,7 @@ class PostRepoInMemoryImpl : PostRepo {
                 "Vova",
                 "Let it crash $index",// не видать
                 "29.06.2022",
-                count_reposts = 1999
+                countReposts = 1999
             )
         }
     )
@@ -25,14 +25,14 @@ class PostRepoInMemoryImpl : PostRepo {
         data.value = posts.map {
             if (it.id == postId) it.copy(
                 liked = !it.liked,
-                count_likes = if (!it.liked) 1 else 0
+                countLikes = if (!it.liked) 1 else 0
             ) else it
         }
     }
 
     override fun share(postId: Long) {
         data.value =
-            posts.map { if (it.id == postId) it.copy(count_reposts = it.count_reposts + 1) else it }
+            posts.map { if (it.id == postId) it.copy(countReposts = it.countReposts + 1) else it }
 
     }
 

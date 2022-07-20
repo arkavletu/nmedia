@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.netology.nmedia.databinding.PostBinding
 import java.math.RoundingMode
-import kotlin.properties.Delegates
 
 internal class PostsAdapter(
 
@@ -48,7 +47,7 @@ internal class PostsAdapter(
 //
                         else -> false
                     }
-                    //else -> false
+
                 }
             }
         }
@@ -70,8 +69,8 @@ internal class PostsAdapter(
                 content.text = post.content
                 date.text = post.date
                 likes.setImageResource(if (post.liked) R.drawable.liked_24 else R.drawable.likes_24dp)
-                countLikes.text = post.count_likes.toString()// spellCounterOfSmth(post.count_likes)
-                countReposts.text = spellCounterOfSmth(post.count_reposts)
+                countLikes.text = spellCounterOfSmth(post.countLikes)
+                countReposts.text = spellCounterOfSmth(post.countReposts)
                 options.setOnClickListener { popupMenu.show() }
             }
         }
