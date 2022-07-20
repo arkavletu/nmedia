@@ -6,6 +6,6 @@ data class Post(
     val content: String,
     val date: String,
     val liked: Boolean = false,
-    val count_likes: Int = 0,
-    val count_reposts: Int = 0
+    val countLikes: Int = 0,
+    val countReposts: Int = 0
 )
