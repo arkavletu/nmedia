@@ -13,4 +13,14 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="Widget.App.LikeButton" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="iconTint">@color/ic_like_tint</item>
+        <item name="android:minWidth">@dimen/ic_button_min_size</item>
+        <item name="android:minHeight">@dimen/ic_button_min_size</item>
+    </style>
+    <style name="Widget.App.ShareButton" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="iconTint">@color/ic_share_tint</item>
+        <item name="android:minWidth">@dimen/ic_button_min_size</item>
+        <item name="android:minHeight">@dimen/ic_button_min_size</item>
+    </style>
 </resources>
