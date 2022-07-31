@@ -25,7 +25,7 @@
         android:ellipsize="end"
         android:singleLine="true"
         android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@id/options"
+        app:layout_constraintEnd_toStartOf="@id/toggleGroup"
         app:layout_constraintStart_toEndOf="@id/avatar"
         app:layout_constraintTop_toTopOf="@id/avatar"
         tools:text="имя автора поста" />
@@ -41,21 +41,31 @@
         app:layout_constraintStart_toEndOf="@id/avatar"
         tools:text="15.04.2022" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/options"
+    <com.google.android.material.button.MaterialButtonToggleGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/options" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/toggleGroup"
+
+        >
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/options"
+            style="@style/Widget.App.Button.OutlinedButton.IconOnly"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:checkable="true"
+            app:icon="@drawable/options"
+             />
+    </com.google.android.material.button.MaterialButtonToggleGroup>
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/header_barrier"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="avatar,date,options" />
+        app:constraint_referenced_ids="avatar,date,toggleGroup" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/content"
