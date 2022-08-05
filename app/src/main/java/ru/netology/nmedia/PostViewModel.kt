@@ -1,5 +1,6 @@
 package ru.netology.nmedia
 
+import SingleLiveEvent
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
@@ -7,6 +8,7 @@ class PostViewModel: ViewModel(), PostActionListener {
     private val repo: PostRepo = PostRepoInMemoryImpl()
     val data by repo::data
     val currentPost = MutableLiveData<Post?>(null)
+    val sharePost = SingleLiveEvent<String>()
 
     fun onSaveClicked(content: String){
         if (content.isBlank()) return
@@ -27,8 +29,10 @@ class PostViewModel: ViewModel(), PostActionListener {
        repo.like(post.id)
 
 
-    override fun onShareClicked(post: Post) =
+    override fun onShareClicked(post: Post) {
+        sharePost.value = post.content
         repo.share(post.id)
+    }
 
 
     override fun onDeleteClicked(post: Post) =

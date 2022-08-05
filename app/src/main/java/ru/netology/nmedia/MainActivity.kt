@@ -1,5 +1,6 @@
 package ru.netology.nmedia
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
@@ -55,6 +56,16 @@ class MainActivity : AppCompatActivity(){
                     binding.group.visibility = View.GONE
                 }
             }
+        }
+        viewModel.sharePost.observe(this){postContent ->
+            val intent = Intent().apply{
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT,postContent)
+                type = "text/plain"
+            }
+            val shareIntent =
+                Intent.createChooser(intent,getString(R.string.chooser_share_post))
+            startActivity(shareIntent)
         }
 
 
