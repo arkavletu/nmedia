@@ -8,12 +8,15 @@
         <entry key="..\:/AndroidSDK/WORK/app/src/main/res/drawable/ic_baseline_cancel_24.xml" value="0.128" />
         <entry key="..\:/AndroidSDK/WORK/app/src/main/res/drawable/ic_like_24_dp.xml" value="0.125" />
         <entry key="..\:/AndroidSDK/WORK/app/src/main/res/drawable/ic_options.xml" value="0.125" />
+        <entry key="..\:/AndroidSDK/WORK/app/src/main/res/drawable/ic_plus_24.xml" value="0.125" />
         <entry key="..\:/AndroidSDK/WORK/app/src/main/res/drawable/ic_save_48.xml" value="0.128" />
         <entry key="..\:/AndroidSDK/WORK/app/src/main/res/drawable/ic_share.xml" value="0.125" />
         <entry key="..\:/AndroidSDK/WORK/app/src/main/res/drawable/options.xml" value="0.1795" />
         <entry key="..\:/AndroidSDK/WORK/app/src/main/res/drawable/post_avatar.xml" value="0.1875" />
         <entry key="..\:/AndroidSDK/WORK/app/src/main/res/drawable/share_24dp.xml" value="0.125" />
         <entry key="..\:/AndroidSDK/WORK/app/src/main/res/layout/activity_main.xml" value="0.226890756302521" />
+        <entry key="..\:/AndroidSDK/WORK/app/src/main/res/layout/activity_post_content.xml" value="0.20416666666666666" />
+        <entry key="..\:/AndroidSDK/WORK/app/src/main/res/layout/intent_handler_activity.xml" value="0.1" />
         <entry key="..\:/AndroidSDK/WORK/app/src/main/res/layout/post.xml" value="0.5" />
         <entry key="..\:/AndroidSDK/WORK/app/src/main/res/layout/post_item.xml" value="0.22" />
         <entry key="..\:/AndroidSDK/WORK/app/src/main/res/menu/menu.xml" value="0.20416666666666666" />

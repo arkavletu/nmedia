@@ -9,6 +9,8 @@ class PostViewModel: ViewModel(), PostActionListener {
     val data by repo::data
     val currentPost = MutableLiveData<Post?>(null)
     val sharePost = SingleLiveEvent<String>()
+    val navigateToEditScreenEvent = SingleLiveEvent<Unit>()
+
 
     fun onSaveClicked(content: String){
         if (content.isBlank()) return
@@ -34,6 +36,10 @@ class PostViewModel: ViewModel(), PostActionListener {
         repo.share(post.id)
     }
 
+    override fun onFabClicked() {
+        navigateToEditScreenEvent.call()
+    }
+
 
     override fun onDeleteClicked(post: Post) =
         repo.delete(post.id)
@@ -44,10 +50,6 @@ class PostViewModel: ViewModel(), PostActionListener {
 
     }
 
-    fun onCanselClicked() {
-        currentPost.value = null
-
-    }
 
 
 
