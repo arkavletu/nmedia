@@ -12,14 +12,17 @@
         android:layout_height="match_parent"
         android:background="@android:color/transparent"
         android:gravity="start|top"
-        android:inputType="textMultiLine" />
+        android:inputType="textMultiLine"
+        android:autofillHints="Text here" />
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
         style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="bottom" />
+        app:fabAlignmentMode="center"
+        android:layout_gravity="bottom"
+        />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/ok"
