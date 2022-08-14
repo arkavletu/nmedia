@@ -1,8 +1,13 @@
+buildscript {
+    ext.kotlin_version = "1.7.0"
+
+}
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     //id 'kotlin-android-extensions'
 }
+
 
 android {
     compileSdk 32
@@ -26,53 +31,31 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '11'
     }
 }
 
 dependencies {
-
-    implementation 'androidx.core:core-ktx:1.8.0'
-    implementation 'androidx.appcompat:appcompat:1.5.0'
-    implementation 'com.google.android.material:material:1.6.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    def lifecycle_version = "2.6.0-alpha01"
-    //def activity_version = "1.7.1"
-    //def arch_version = "2.1.0"
-    implementation "androidx.fragment:fragment-ktx:1.5.2"
-    // ViewModel
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
-    implementation("androidx.activity:activity-ktx:1.7.1")
-    //ViewModel utilities for Compose
-   //implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version")
-    //LiveData
-    //implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
-    // Lifecycles only (without ViewModel or LiveData)
-    //implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
-
-    // Saved state module for ViewModel
-    //implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version")
-
-    // Annotation processor
-    //kapt("androidx.lifecycle:lifecycle-compiler:$lifecycle_version")
-    // alternately - if using Java8, use the following instead of lifecycle-compiler
-    //implementation("androidx.lifecycle:lifecycle-common-java8:$lifecycle_version")
-
-    // optional - helpers for implementing LifecycleOwner in a Service
-    //implementation("androidx.lifecycle:lifecycle-service:$lifecycle_version")
-
-    // optional - ProcessLifecycleOwner provides a lifecycle for the whole application process
-    //implementation("androidx.lifecycle:lifecycle-process:$lifecycle_version")
-
-    // optional - ReactiveStreams support for LiveData
-    //implementation("androidx.lifecycle:lifecycle-reactivestreams-ktx:$lifecycle_version")
-
-    // optional - Test helpers for LiveData
-    //testImplementation("androidx.arch.core:core-testing:$arch_version")
+    def core_version = "1.8.0"
+    def appcompat_version = "1.5.0"
+    def mdc_version = "1.6.1"
+    def constraintlayout_version = "2.1.4"
+    def recyclerview_version = "1.2.1"
+    def activity_version = "1.5.1"
+    def lifecycle_version = "2.5.1"
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.0"
+    implementation "androidx.core:core-ktx:$core_version"
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+    implementation "com.google.android.material:material:$mdc_version"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
+    implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
+    implementation 'androidx.activity:activity-ktx:1.5.1'
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 }
 
 

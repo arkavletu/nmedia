@@ -11,7 +11,7 @@
         android:theme="@style/Theme.Nmedia">
         <activity
             android:name=".PostContentActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
