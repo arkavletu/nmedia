@@ -27,7 +27,6 @@ class IntentHandlerActivity: AppCompatActivity() {
                 .show()
             return
         }
-        // handle text
     }
 
 }

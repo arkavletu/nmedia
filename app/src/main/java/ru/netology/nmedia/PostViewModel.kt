@@ -1,8 +1,12 @@
 package ru.netology.nmedia
 
 import SingleLiveEvent
+import android.content.Intent
+import android.net.Uri
+import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import java.net.URI
 
 class PostViewModel: ViewModel(), PostActionListener {
     private val repo: PostRepo = PostRepoInMemoryImpl()
@@ -10,7 +14,7 @@ class PostViewModel: ViewModel(), PostActionListener {
     val currentPost = MutableLiveData<Post?>(null)
     val sharePost = SingleLiveEvent<String>()
     val navigateToEditScreenEvent = SingleLiveEvent<Unit>()
-
+    val playVideoEvent = SingleLiveEvent<String>()
 
     fun onSaveClicked(content: String){
         if (content.isBlank()) return
@@ -21,7 +25,7 @@ class PostViewModel: ViewModel(), PostActionListener {
             id = PostRepo.NEWPOSTID,
             content = content,
             author = "Smbd",
-            date = "12.07"
+            date = "12.07",
         )
         repo.save(post)
         currentPost.value = null
@@ -36,6 +40,7 @@ class PostViewModel: ViewModel(), PostActionListener {
         repo.share(post.id)
     }
 
+
     override fun onFabClicked() {
         navigateToEditScreenEvent.call()
     }
@@ -45,8 +50,13 @@ class PostViewModel: ViewModel(), PostActionListener {
         repo.delete(post.id)
 
     override fun onEditClicked(post: Post) {
-
         currentPost.value = post
+        navigateToEditScreenEvent.call()
+
+    }
+
+    override fun onPlayClicked(post: Post) {
+        playVideoEvent.value = post.video
 
     }
 

@@ -13,6 +13,9 @@ class PostContentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityPostContentBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+
         binding.edit.requestFocus()
         binding.ok.setOnClickListener {
             val intent = Intent()
@@ -23,6 +26,7 @@ class PostContentActivity : AppCompatActivity() {
                 val content = text.toString()
                 intent.putExtra(RESULT_KEY,content)
                 setResult(Activity.RESULT_OK,intent)
+
             }
             finish()
         }

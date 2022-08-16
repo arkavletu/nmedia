@@ -1,6 +1,7 @@
 package ru.netology.nmedia
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.result.launch
 import androidx.appcompat.app.AppCompatActivity
@@ -23,7 +24,11 @@ class MainActivity : AppCompatActivity(){
             adapter.submitList(posts)
         }
 
-
+        viewModel.playVideoEvent.observe(this){video ->
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(video))
+            val playIntent = Intent.createChooser(intent,"Choose app")
+            startActivity(playIntent)
+        }
         viewModel.sharePost.observe(this){postContent ->
             val intent = Intent().apply{
                 action = Intent.ACTION_SEND
@@ -39,6 +44,7 @@ class MainActivity : AppCompatActivity(){
             viewModel.onFabClicked()
         }
 
+
         val postContentResultLauncher = registerForActivityResult(
             PostContentActivity.ResultContract
         ){ postContent ->
@@ -49,6 +55,21 @@ class MainActivity : AppCompatActivity(){
         viewModel.navigateToEditScreenEvent.observe(this){
             postContentResultLauncher.launch()
         }
+
+//        viewModel.currentPost.observe(this){ currentPost ->
+//            val bindingPost = ActivityPostContentBinding()
+//            with(bindingPost) {
+//                val content = currentPost?.content
+//                edit.setText(content)
+//                if(content != null) {
+//                    edit.requestFocus()
+//                    edit.showKeyboard()
+//                }
+//                else {
+//                    return@observe
+//                }
+//            }
+//        }
 
 
     }

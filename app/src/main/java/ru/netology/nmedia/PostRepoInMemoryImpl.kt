@@ -1,6 +1,7 @@
 package ru.netology.nmedia
 
 
+import android.annotation.SuppressLint
 import androidx.core.util.Preconditions.checkNotNull
 import androidx.lifecycle.MutableLiveData
 
@@ -14,12 +15,12 @@ class PostRepoInMemoryImpl : PostRepo {
                 "Vova",
                 "Let it crash $index",// не видать
                 "29.06.2022",
-                countReposts = 1999
-            )
+                 video = "https://www.youtube.com/watch?v=WhWc3b3KhnY"            )
         }
     )
 
-    private val posts get() = checkNotNull(data.value) { "no nullable" }
+    private val posts @SuppressLint("RestrictedApi")
+    get() = checkNotNull(data.value) { "no nullable" }
 
 
     override fun like(postId: Long) {
@@ -61,5 +62,7 @@ class PostRepoInMemoryImpl : PostRepo {
     private companion object{
         const val GENERATEDAMMOUNT = 10
     }
+
+
 
 }
