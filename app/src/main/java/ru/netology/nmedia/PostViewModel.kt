@@ -14,7 +14,7 @@ class PostViewModel: ViewModel(), PostActionListener {
     val currentPost = MutableLiveData<Post?>(null)
     val sharePost = SingleLiveEvent<String>()
     val navigateToEditScreenEvent = SingleLiveEvent<Unit>()
-    val playVideoEvent = SingleLiveEvent<String>()
+    val playVideoEvent = SingleLiveEvent<String?>()
 
     fun onSaveClicked(content: String){
         if (content.isBlank()) return

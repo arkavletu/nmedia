@@ -6,6 +6,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContract
+import androidx.activity.viewModels
 import ru.netology.nmedia.databinding.ActivityPostContentBinding
 
 class PostContentActivity : AppCompatActivity() {
@@ -14,10 +15,13 @@ class PostContentActivity : AppCompatActivity() {
         val binding = ActivityPostContentBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        val viewModel by viewModels<PostViewModel>()
+        val extra  = viewModel.currentPost.value?.content
+        binding.edit.setText(extra)
 
         binding.edit.requestFocus()
         binding.ok.setOnClickListener {
+
             val intent = Intent()
             val text = binding.edit.text
             if(text.isNullOrBlank()){

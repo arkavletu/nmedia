@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
 import ru.netology.nmedia.databinding.ActivityIntentMediaBinding
-import ru.netology.nmedia.databinding.IntentHandlerActivityBinding
 
 class IntentMediaActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {

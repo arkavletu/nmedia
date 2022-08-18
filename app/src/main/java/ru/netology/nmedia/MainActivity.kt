@@ -7,6 +7,7 @@ import androidx.activity.result.launch
 import androidx.appcompat.app.AppCompatActivity
 import ru.netology.nmedia.databinding.ActivityMainBinding
 import androidx.activity.viewModels
+import ru.netology.nmedia.databinding.ActivityPostContentBinding
 
 class MainActivity : AppCompatActivity(){
     val viewModel by viewModels<PostViewModel>()
@@ -56,20 +57,12 @@ class MainActivity : AppCompatActivity(){
             postContentResultLauncher.launch()
         }
 
-//        viewModel.currentPost.observe(this){ currentPost ->
-//            val bindingPost = ActivityPostContentBinding()
-//            with(bindingPost) {
-//                val content = currentPost?.content
-//                edit.setText(content)
-//                if(content != null) {
-//                    edit.requestFocus()
-//                    edit.showKeyboard()
-//                }
-//                else {
-//                    return@observe
-//                }
-//            }
-//        }
+        viewModel.currentPost.observe(this){ currentPost ->
+
+                val content = currentPost?.content
+
+
+        }
 
 
     }

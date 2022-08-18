@@ -64,6 +64,9 @@ internal class PostsAdapter(
             binding.video.setOnClickListener {
                 listener.onPlayClicked(post)
             }
+            binding.play.setOnClickListener {
+                listener.onPlayClicked(post)
+            }
 
         }
 
