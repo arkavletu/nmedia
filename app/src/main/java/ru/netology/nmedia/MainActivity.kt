@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import ru.netology.nmedia.databinding.ActivityMainBinding
 import androidx.activity.viewModels
 
-class MainActivity : AppCompatActivity(){
+class MainActivity : AppCompatActivity() {
     val viewModel by viewModels<PostViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,26 +16,25 @@ class MainActivity : AppCompatActivity(){
         setContentView(binding.root)
 
 
-
         val adapter = PostsAdapter(viewModel)
         binding.list.adapter = adapter
-        viewModel.data.observe(this){posts ->
+        viewModel.data.observe(this) { posts ->
             adapter.submitList(posts)
         }
 
-        viewModel.playVideoEvent.observe(this){video ->
+        viewModel.playVideoEvent.observe(this) { video ->
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(video))
-            val playIntent = Intent.createChooser(intent,"Choose app")
+            val playIntent = Intent.createChooser(intent, "Choose app")
             startActivity(playIntent)
         }
-        viewModel.sharePost.observe(this){postContent ->
-            val intent = Intent().apply{
+        viewModel.sharePost.observe(this) { postContent ->
+            val intent = Intent().apply {
                 action = Intent.ACTION_SEND
-                putExtra(Intent.EXTRA_TEXT,postContent)
+                putExtra(Intent.EXTRA_TEXT, postContent)
                 type = "text/plain"
             }
             val shareIntent =
-                Intent.createChooser(intent,getString(R.string.chooser_share_post))
+                Intent.createChooser(intent, getString(R.string.chooser_share_post))
             startActivity(shareIntent)
         }
 
@@ -46,22 +45,19 @@ class MainActivity : AppCompatActivity(){
 
         val postContentResultLauncher = registerForActivityResult(
             PostContentActivity.ResultContract
-        ){ postContent ->
+        ) { postContent ->
             postContent ?: return@registerForActivityResult
             viewModel.onSaveClicked(postContent)
 
         }
-        viewModel.navigateToEditScreenEvent.observe(this){
+        viewModel.navigateToEditScreenEvent.observe(this) {
             val content = viewModel.currentPost.value?.content
             postContentResultLauncher.launch(content)
         }
 
 
-
-
-
-        }
-
-
     }
+
+
+}
 

@@ -6,7 +6,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContract
-import androidx.activity.viewModels
 import ru.netology.nmedia.databinding.ActivityPostContentBinding
 
 class PostContentActivity : AppCompatActivity() {
