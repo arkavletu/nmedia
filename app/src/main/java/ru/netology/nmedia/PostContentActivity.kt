@@ -15,10 +15,10 @@ class PostContentActivity : AppCompatActivity() {
         val binding = ActivityPostContentBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val viewModel by viewModels<PostViewModel>()
-        val extra  = viewModel.currentPost.value?.content
-        binding.edit.setText(extra)
-
+//        val viewModel by viewModels<PostViewModel>()
+//        val extra  = viewModel.currentPost.value?.content
+//        binding.edit.setText(extra)
+        binding.edit.setText(intent.getStringExtra("postContent"))
         binding.edit.requestFocus()
         binding.ok.setOnClickListener {
 
@@ -32,13 +32,17 @@ class PostContentActivity : AppCompatActivity() {
                 setResult(Activity.RESULT_OK,intent)
 
             }
+            binding.edit.text.clear()
             finish()
         }
     }
 
-    object ResultContract: ActivityResultContract<Unit,String?>(){
-        override fun createIntent(context: Context, input: Unit) =
-        Intent(context,PostContentActivity::class.java)
+    object ResultContract: ActivityResultContract<String?,String?>(){
+        override fun createIntent(context: Context, input: String?): Intent {
+        val intent = Intent(context,PostContentActivity::class.java)
+            intent.putExtra("postContent",input)
+            return intent
+        }
 
 
         override fun parseResult(resultCode: Int, intent: Intent?): String? =

@@ -3,11 +3,9 @@ package ru.netology.nmedia
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import androidx.activity.result.launch
 import androidx.appcompat.app.AppCompatActivity
 import ru.netology.nmedia.databinding.ActivityMainBinding
 import androidx.activity.viewModels
-import ru.netology.nmedia.databinding.ActivityPostContentBinding
 
 class MainActivity : AppCompatActivity(){
     val viewModel by viewModels<PostViewModel>()
@@ -54,16 +52,16 @@ class MainActivity : AppCompatActivity(){
 
         }
         viewModel.navigateToEditScreenEvent.observe(this){
-            postContentResultLauncher.launch()
+            val content = viewModel.currentPost.value?.content
+            postContentResultLauncher.launch(content)
         }
 
-        viewModel.currentPost.observe(this){ currentPost ->
 
-                val content = currentPost?.content
+
 
 
         }
 
 
     }
-}
+
