@@ -15,11 +15,9 @@ class PostContentActivity : AppCompatActivity() {
         val binding = ActivityPostContentBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        val viewModel by viewModels<PostViewModel>()
-//        val extra  = viewModel.currentPost.value?.content
-//        binding.edit.setText(extra)
         binding.edit.setText(intent.getStringExtra("postContent"))
         binding.edit.requestFocus()
+        binding.edit.showKeyboard()
         binding.ok.setOnClickListener {
 
             val intent = Intent()
@@ -33,6 +31,7 @@ class PostContentActivity : AppCompatActivity() {
 
             }
             binding.edit.text.clear()
+            binding.edit.hideKeyboard()
             finish()
         }
     }
