@@ -1,15 +1,15 @@
 package ru.netology.nmedia
 
 import SingleLiveEvent
-import android.content.Intent
-import android.net.Uri
-import androidx.core.content.ContextCompat.startActivity
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import java.net.URI
 
-class PostViewModel: ViewModel(), PostActionListener {
-    private val repo: PostRepo = PostRepoInMemoryImpl()
+
+class PostViewModel(
+    application: Application
+): AndroidViewModel(application), PostActionListener {
+    private val repo: PostRepo = PostRepoImplFiles(application)
     val data by repo::data
     val currentPost = MutableLiveData<Post?>(null)
     val sharePost = SingleLiveEvent<String>()

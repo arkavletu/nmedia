@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
+
         val adapter = PostsAdapter(viewModel)
         binding.list.adapter = adapter
         viewModel.data.observe(this) { posts ->
