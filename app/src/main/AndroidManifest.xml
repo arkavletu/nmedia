@@ -10,22 +10,26 @@
         android:roundIcon="@mipmap/nmedia_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Nmedia">
+
         <activity
             android:name=".IntentMediaActivity"
             android:exported="true">
-        <intent-filter android:scheme="file:URI"
-            tools:ignore="AppLinkUrlError">
-            <action android:name="android.intent.action.VIEW"
-                tools:ignore="AppLinkUrlError" />
-            <data android:mimeType="video/*" />
-            <category android:name="android.intent.category.DEFAULT" />
-        </intent-filter>
+            <intent-filter
+                android:scheme="file:URI"
+                tools:ignore="AppLinkUrlError">
+                <action
+                    android:name="android.intent.action.VIEW"
+                    tools:ignore="AppLinkUrlError" />
+
+                <data android:mimeType="video/*" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
+
         <activity
-            android:name=".PostContentActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".AppActivity"
+            android:windowSoftInputMode="adjustResize"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

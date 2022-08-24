@@ -13,7 +13,7 @@ class PostViewModel: ViewModel(), PostActionListener {
     val data by repo::data
     val currentPost = MutableLiveData<Post?>(null)
     val sharePost = SingleLiveEvent<String>()
-    val navigateToEditScreenEvent = SingleLiveEvent<Unit>()
+    val navigateToEditScreenEvent = SingleLiveEvent<String?>()
     val playVideoEvent = SingleLiveEvent<String?>()
 
     fun onSaveClicked(content: String){
@@ -50,8 +50,8 @@ class PostViewModel: ViewModel(), PostActionListener {
         repo.delete(post.id)
 
     override fun onEditClicked(post: Post) {
-        currentPost.value = post
-        navigateToEditScreenEvent.call()
+        //currentPost.value = post
+        navigateToEditScreenEvent.value = post.content
 
     }
 
