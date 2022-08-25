@@ -5,18 +5,21 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
-import ru.netology.nmedia.databinding.ActivityPostContentBinding
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import ru.netology.nmedia.databinding.PostContentFragmentBinding
 
-class PostContentFragment(
-    private val initialContent: String?
-) : Fragment() {
+class PostContentFragment : Fragment() {
+
+    private val args by navArgs<PostContentFragmentArgs>()
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ) = ActivityPostContentBinding.inflate(layoutInflater, container, false).also { binding ->
-        binding.edit.setText(initialContent)//arguments
+    ) = PostContentFragmentBinding.inflate(layoutInflater, container, false).also { binding ->
+        binding.edit.setText(args.initialContent)//arguments
         binding.edit.requestFocus()
         binding.edit.showKeyboard()
         binding.ok.setOnClickListener {
@@ -28,7 +31,7 @@ class PostContentFragment(
             }
             binding.edit.text.clear()
             binding.edit.hideKeyboard()
-            parentFragmentManager.popBackStack()
+            findNavController().popBackStack()
         }
     }.root
 
@@ -37,5 +40,9 @@ class PostContentFragment(
     companion object {
         const val REQUEST_KEY = "postContentRequestKey"
         const val RESULT_KEY = "postNewContent"
+
+
+
+
     }
 }

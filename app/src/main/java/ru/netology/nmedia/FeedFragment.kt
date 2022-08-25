@@ -5,11 +5,12 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import ru.netology.nmedia.databinding.ActivityMainBinding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import ru.netology.nmedia.databinding.FeedFragmentBinding
 
 class FeedFragment : Fragment() {
     val viewModel by viewModels<PostViewModel>()
@@ -45,12 +46,13 @@ class FeedFragment : Fragment() {
         }
 
         viewModel.navigateToEditScreenEvent.observe(this) {initialContent ->
-            //val content = viewModel.currentPost.value?.content
-            parentFragmentManager.commit {
-                val fragment = PostContentFragment(initialContent)
-                replace(R.id.fragment_container, fragment)
-                addToBackStack(null)
-            }
+            val direction = FeedFragmentDirections.toPostContentFragment(initialContent)
+            findNavController().navigate(direction)
+//            parentFragmentManager.commit {
+//                val fragment = PostContentFragment.create(initialContent)
+//                replace(R.id.fragment_container, fragment)
+//                addToBackStack(null)
+//            }
         }
 
 
@@ -60,7 +62,7 @@ class FeedFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ) = ActivityMainBinding.inflate(layoutInflater,container,false).also{
+    ) = FeedFragmentBinding.inflate(layoutInflater,container,false).also{
         val adapter = PostsAdapter(viewModel)
         it.list.adapter = adapter
         viewModel.data.observe(viewLifecycleOwner) { posts ->
@@ -70,6 +72,10 @@ class FeedFragment : Fragment() {
             viewModel.onFabClicked()
         }
     }.root
+
+    companion object{
+        const val TAG = "feedFragment"
+    }
 
 
 }

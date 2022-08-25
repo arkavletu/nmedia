@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="MainActivity">
+    tools:context=".FeedFragment"
+    tools:ignore="MissingDefaultResource">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list"
@@ -23,7 +24,8 @@
         app:srcCompat="@drawable/ic_plus_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="@dimen/fub_margin"/>
+        android:layout_margin="@dimen/fub_margin"
+        android:contentDescription="@string/newpost" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

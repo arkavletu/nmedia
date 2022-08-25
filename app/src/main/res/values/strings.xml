@@ -13,4 +13,5 @@
     <string name="chooser_share_post">Choose app</string>
     <string name="description_post_save">saving</string>
     <string name="error_empty_content">no content</string>
+    <string name="newpost">newPost</string>
 </resources>
