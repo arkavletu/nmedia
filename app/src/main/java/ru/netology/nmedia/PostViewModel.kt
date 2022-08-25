@@ -1,15 +1,16 @@
 package ru.netology.nmedia
 
 import SingleLiveEvent
-import android.content.Intent
-import android.net.Uri
-import androidx.core.content.ContextCompat.startActivity
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import java.net.URI
+import android.app.Application
 
-class PostViewModel: ViewModel(), PostActionListener {
-    private val repo: PostRepo = PostRepoInMemoryImpl()
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
+
+
+class PostViewModel(
+    application: Application
+): AndroidViewModel(application), PostActionListener {
+    private val repo: PostRepo = PostRepoImplFiles(application)
     val data by repo::data
     val currentPost = MutableLiveData<Post?>(null)
     val sharePost = SingleLiveEvent<String>()
@@ -50,7 +51,7 @@ class PostViewModel: ViewModel(), PostActionListener {
         repo.delete(post.id)
 
     override fun onEditClicked(post: Post) {
-        //currentPost.value = post
+        currentPost.value = post
         navigateToEditScreenEvent.value = post.content
 
     }

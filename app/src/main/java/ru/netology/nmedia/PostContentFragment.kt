@@ -16,7 +16,7 @@ class PostContentFragment(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ) = ActivityPostContentBinding.inflate(layoutInflater, container, false).also { binding ->
-        binding.edit.setText(initialContent)
+        binding.edit.setText(initialContent)//arguments
         binding.edit.requestFocus()
         binding.edit.showKeyboard()
         binding.ok.setOnClickListener {
