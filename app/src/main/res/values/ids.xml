@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <item name="list" type="id">list</item>
-    <item name="fab" type="id">fab</item>
-    <item name="bottomAppBar" type="id">bottomAppBar</item>
-    <item name="ok" type="id">ok</item>
-</resources>
