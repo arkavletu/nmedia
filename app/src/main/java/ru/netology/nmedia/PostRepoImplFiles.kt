@@ -22,7 +22,7 @@ class PostRepoImplFiles(
         prefs.edit { putLong(NEXT_ID_KEY, newValue) }
     }
 
-    override val data: MutableLiveData<List<Post>> = MutableLiveData(emptyList<Post>())
+    override val data: MutableLiveData<List<Post>> = MutableLiveData(emptyList())
 
     private var posts
         get() = checkNotNull(data.value) { "no nullable" }
@@ -68,7 +68,7 @@ class PostRepoImplFiles(
     }
 
     override fun save(post: Post) {
-        if (post.id == PostRepo.NEWPOSTID) insert(post) else update(post)// insert edited as new - check id
+        if (post.id == PostRepo.NEWPOSTID) insert(post) else update(post)
     }
 
 
@@ -82,6 +82,8 @@ class PostRepoImplFiles(
         posts = listOf(post.copy(id = ++nextId)) + posts
 
     }
+
+
 
     private companion object {
         const val NEXT_ID_KEY = "nextId"

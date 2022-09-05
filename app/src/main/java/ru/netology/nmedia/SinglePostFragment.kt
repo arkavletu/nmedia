@@ -3,22 +3,27 @@ package ru.netology.nmedia
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
-import ru.netology.nmedia.databinding.FeedFragmentBinding
+import androidx.navigation.fragment.navArgs
+import ru.netology.nmedia.databinding.FragmentSinglePostBinding
 
-class FeedFragment : Fragment() {
+class SinglePostFragment : Fragment() {
+    private val args by navArgs<SinglePostFragmentArgs>()
+
     val viewModel by viewModels<PostViewModel>(
         ownerProducer = ::requireParentFragment
     )
+    //val singlePostVM by viewModels<SinglePostViewModel>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         viewModel.playVideoEvent.observe(this)
         { video ->
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(video))
@@ -39,7 +44,7 @@ class FeedFragment : Fragment() {
 
         setFragmentResultListener(PostContentFragment.REQUEST_KEY)
         { requestKey, bundle ->
-            if (requestKey != PostContentFragment.REQUEST_KEY) return@setFragmentResultListener// edit here!!!
+            if (requestKey != PostContentFragment.REQUEST_KEY) return@setFragmentResultListener
             val newPostContent = bundle.getString(
                 PostContentFragment.RESULT_KEY
             ) ?: return@setFragmentResultListener
@@ -48,46 +53,26 @@ class FeedFragment : Fragment() {
 
         viewModel.navigateToEditScreenEvent.observe(this)
         { initialContent ->
-            val direction = FeedFragmentDirections.toPostContentFragment(initialContent)
+            val direction = SinglePostFragmentDirections.fromSinglePostToPostContentFragment(initialContent)
             findNavController().navigate(direction)
-
         }
 
-        viewModel.navigateToPostFragment.observe(this)
-        { id ->
-            val direction = FeedFragmentDirections.toSinglePostFragment(id)
-            findNavController().navigate(direction)
-
+        viewModel.navigateToFirstFragment.observe(this){
+            findNavController().popBackStack()
         }
-
-
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ) = FeedFragmentBinding.inflate(layoutInflater, container, false).also {
+    ) = FragmentSinglePostBinding.inflate(layoutInflater, container, false).also{
+        val id = args.post
         val adapter = PostsAdapter(viewModel)
-        it.includedList.list.adapter = adapter
+        it.included.list.adapter = adapter
         viewModel.data.observe(viewLifecycleOwner) { posts ->
-            adapter.submitList(posts)
+            adapter.submitList(posts.filter { it.id == id })
         }
-        it.fab.setOnClickListener {
-            viewModel.onFabClicked()
-        }
-
-
     }.root
 
-
-    companion object {
-        const val TAG = "feedFragment"
-    }
 }
-
-
-
-
-

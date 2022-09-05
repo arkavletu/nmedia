@@ -19,7 +19,10 @@
         <entry key="..\:/AndroidSDK/WORK/app/src/main/res/layout/activity_main.xml" value="0.226890756302521" />
         <entry key="..\:/AndroidSDK/WORK/app/src/main/res/layout/activity_post_content.xml" value="0.20416666666666666" />
         <entry key="..\:/AndroidSDK/WORK/app/src/main/res/layout/feed_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/AndroidSDK/WORK/app/src/main/res/layout/fragment_post.xml" value="0.22" />
+        <entry key="..\:/AndroidSDK/WORK/app/src/main/res/layout/fragment_single_post.xml" value="0.18" />
         <entry key="..\:/AndroidSDK/WORK/app/src/main/res/layout/intent_handler_activity.xml" value="0.1" />
+        <entry key="..\:/AndroidSDK/WORK/app/src/main/res/layout/list_layout.xml" value="0.203125" />
         <entry key="..\:/AndroidSDK/WORK/app/src/main/res/layout/post.xml" value="0.33" />
         <entry key="..\:/AndroidSDK/WORK/app/src/main/res/layout/post_content_fragment.xml" value="0.20416666666666666" />
         <entry key="..\:/AndroidSDK/WORK/app/src/main/res/layout/post_item.xml" value="0.22" />

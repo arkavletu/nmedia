@@ -9,4 +9,5 @@ interface PostActionListener {
     fun onDeleteClicked(post: Post)
     fun onEditClicked(post: Post)
     fun onPlayClicked(post: Post)
+    fun onPostClicked(id:Long)
 }

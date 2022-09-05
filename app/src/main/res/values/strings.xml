@@ -14,4 +14,5 @@
     <string name="description_post_save">saving</string>
     <string name="error_empty_content">no content</string>
     <string name="newpost">newPost</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 </resources>
