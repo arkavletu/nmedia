@@ -2,6 +2,7 @@ package ru.netology.nmedia
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -68,9 +69,9 @@ internal class PostsAdapter(
                 author.text = post.author
                 content.text = post.content
                 date.text = post.date
-                likes.setImageResource(if (post.liked) R.drawable.liked_24 else R.drawable.likes_24dp)
-                countLikes.text = spellCounterOfSmth(post.countLikes)
-                countReposts.text = spellCounterOfSmth(post.countReposts)
+                likes.isChecked = post.liked
+                likes.text = spellCounterOfSmth(post.countLikes)
+                share.text = spellCounterOfSmth(post.countReposts)
                 options.setOnClickListener { popupMenu.show() }
             }
         }
