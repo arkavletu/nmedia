@@ -32,6 +32,6 @@ class PostRepoInMemoryImpl : PostRepo {
         data.value =
             posts.map { if (it.id == postId) it.copy(count_reposts = it.count_reposts + 1) else it }
 
-    }
+
 
 }
