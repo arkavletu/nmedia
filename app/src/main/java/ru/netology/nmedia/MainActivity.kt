@@ -14,6 +14,29 @@ class MainActivity : AppCompatActivity(){
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+       // val viewModel by viewModels<PostViewModel>()
+
+        viewModel.data.observe(this){post ->
+          binding.render(post)
+        }
+        binding.likes.setOnClickListener {
+            viewModel.likePost()
+        }
+        binding.share.setOnClickListener{
+            viewModel.sharePost()
+        }
+
+
+    }
+
+    private fun ActivityMainBinding.render(post: Post){
+        author.text = post.author
+        date.text = post.date
+        likes.setImageResource(if(post.liked)R.drawable.liked_24 else R.drawable.likes_24dp)
+        countLikes.text = spellCounterOfSmth(post.countLikes)
+        countReposts.text = spellCounterOfSmth(post.countReposts)
+    }
+
 
 
         val adapter = PostsAdapter(viewModel)
