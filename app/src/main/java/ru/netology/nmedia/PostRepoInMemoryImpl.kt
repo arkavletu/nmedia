@@ -34,7 +34,7 @@ class PostRepoInMemoryImpl : PostRepo {
         data.value =
             posts.map { if (it.id == postId) it.copy(countReposts = it.countReposts + 1) else it }
 
-    }
+
 
     override fun delete(postId: Long) {
         data.value = posts.filter { it.id != postId }
