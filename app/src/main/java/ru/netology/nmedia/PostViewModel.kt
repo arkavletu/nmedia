@@ -1,20 +1,22 @@
 package ru.netology.nmedia
 
 import SingleLiveEvent
-import android.content.Intent
-import android.net.Uri
-import androidx.core.content.ContextCompat.startActivity
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import java.net.URI
 
-class PostViewModel: ViewModel(), PostActionListener {
-    private val repo: PostRepo = PostRepoInMemoryImpl()
+
+class PostViewModel(
+    application: Application
+): AndroidViewModel(application), PostActionListener {
+    private val repo: PostRepo = PostRepoImplFiles(application)
     val data by repo::data
     val currentPost = MutableLiveData<Post?>(null)
     val sharePost = SingleLiveEvent<String>()
-    val navigateToEditScreenEvent = SingleLiveEvent<Unit>()
+    val navigateToEditScreenEvent = SingleLiveEvent<String?>()
     val playVideoEvent = SingleLiveEvent<String?>()
+    val navigateToPostFragment = SingleLiveEvent<Long>()
+    val navigateToFirstFragment = SingleLiveEvent<Unit>()
 
     fun onSaveClicked(content: String){
         if (content.isBlank()) return
@@ -46,18 +48,23 @@ class PostViewModel: ViewModel(), PostActionListener {
     }
 
 
-    override fun onDeleteClicked(post: Post) =
+    override fun onDeleteClicked(post: Post) {
         repo.delete(post.id)
-
+        navigateToFirstFragment.call()
+    }
     override fun onEditClicked(post: Post) {
         currentPost.value = post
-        navigateToEditScreenEvent.call()
+        navigateToEditScreenEvent.value = post.content
 
     }
 
     override fun onPlayClicked(post: Post) {
         playVideoEvent.value = post.video
 
+    }
+
+    override fun onPostClicked(id:Long){
+        navigateToPostFragment.value = id
     }
 
 

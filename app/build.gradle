@@ -5,6 +5,8 @@ buildscript {
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'androidx.navigation.safeargs.kotlin'
+
     //id 'kotlin-android-extensions'
 }
 
@@ -40,22 +42,29 @@ android {
 }
 
 dependencies {
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     def core_version = "1.8.0"
     def appcompat_version = "1.5.0"
     def mdc_version = "1.6.1"
-    def constraintlayout_version = "2.1.4"
+    def constraintLayout_version = "2.1.4"
     def recyclerview_version = "1.2.1"
     def activity_version = "1.5.1"
     def lifecycle_version = "2.5.1"
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.0"
+    def gson_version = "2.9.1"
+    implementation "com.google.code.gson:gson:$gson_version"
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.10"
     implementation "androidx.core:core-ktx:$core_version"
     implementation "androidx.appcompat:appcompat:$appcompat_version"
     implementation "com.google.android.material:material:$mdc_version"
-    implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayout_version"
     implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
     implementation 'androidx.activity:activity-ktx:1.5.1'
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation "androidx.fragment:fragment-ktx:1.5.2"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
 }
 
 
