@@ -1,12 +1,13 @@
 package ru.netology.nmedia
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.view.View
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import ru.netology.nmedia.databinding.ActivityMainBinding
+import androidx.activity.viewModels
 
-class MainActivity : AppCompatActivity(){
+class MainActivity : AppCompatActivity() {
     val viewModel by viewModels<PostViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,48 +39,48 @@ class MainActivity : AppCompatActivity(){
     }
 
 
-
         val adapter = PostsAdapter(viewModel)
         binding.list.adapter = adapter
-        viewModel.data.observe(this){posts ->
+        viewModel.data.observe(this) { posts ->
             adapter.submitList(posts)
         }
 
-        binding.save.setOnClickListener {
-            with(binding.content) {
-                val content = text.toString()
-                viewModel.onSaveClicked(content)
-                binding.canselText.text = ""
+        viewModel.playVideoEvent.observe(this) { video ->
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(video))
+            val playIntent = Intent.createChooser(intent, "Choose app")
+            startActivity(playIntent)
+        }
+        viewModel.sharePost.observe(this) { postContent ->
+            val intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, postContent)
+                type = "text/plain"
             }
+            val shareIntent =
+                Intent.createChooser(intent, getString(R.string.chooser_share_post))
+            startActivity(shareIntent)
         }
 
-        binding.canselButton.setOnClickListener {
-            with(binding.content){
-                clearFocus()
-                hideKeyboard()
-                binding.group.visibility = View.GONE
-                viewModel.onCanselClicked()
-                binding.canselText.text = ""
-            }
+        binding.fab.setOnClickListener {
+            viewModel.onFabClicked()
         }
-        viewModel.currentPost.observe(this){ currentPost ->
-            with(binding.content) {
-                val content = currentPost?.content
-                setText(content)
-                if(content != null) {
-                    binding.group.visibility = View.VISIBLE
-                    binding.canselText.text = "${currentPost.id}"
-                    requestFocus()
-                    showKeyboard()
-                }
-                else {
-                    clearFocus()
-                    hideKeyboard()
-                    binding.group.visibility = View.GONE
-                }
-            }
+
+
+        val postContentResultLauncher = registerForActivityResult(
+            PostContentActivity.ResultContract
+        ) { postContent ->
+            postContent ?: return@registerForActivityResult
+            viewModel.onSaveClicked(postContent)
+
+        }
+        viewModel.navigateToEditScreenEvent.observe(this) {
+            val content = viewModel.currentPost.value?.content
+            postContentResultLauncher.launch(content)
         }
 
 
     }
+
+
 }
+

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="ru.netology.nmedia">
 
     <application
@@ -10,12 +11,37 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Nmedia">
         <activity
+            android:name=".IntentMediaActivity"
+            android:exported="true">
+        <intent-filter android:scheme="file:URI"
+            tools:ignore="AppLinkUrlError">
+            <action android:name="android.intent.action.VIEW"
+                tools:ignore="AppLinkUrlError" />
+            <data android:mimeType="video/*" />
+            <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+        </activity>
+        <activity
+            android:name=".PostContentActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".IntentHandlerActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
     </application>

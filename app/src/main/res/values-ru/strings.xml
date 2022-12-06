@@ -9,4 +9,7 @@
     <string name="remove">Удалить</string>
     <string name="post_text">Текст</string>
     <string name="menu_edit">Редактировать</string>
+    <string name="chooser_share_post">Выберите приложение</string>
+    <string name="description_post_save">saving</string>
+    <string name="error_empty_content">no content</string>
 </resources>

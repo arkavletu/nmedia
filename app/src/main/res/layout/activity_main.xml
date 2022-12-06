@@ -12,86 +12,19 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@id/toolsTop"
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/post"
         android:gravity="bottom"/>
 
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/toolsTop"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:barrierDirection="top"
-        app:constraint_referenced_ids="canselText,canselButton" />
-
-
-    <EditText
-        android:id="@+id/content"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:hint="@string/post_text"
-        android:importantForAutofill="no"
-        android:inputType="textMultiLine"
-        android:padding="@dimen/common_space"
+        android:id="@+id/fab"
+        app:srcCompat="@drawable/ic_plus_24"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/save"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/toolsTop"
-        app:layout_constraintVertical_bias="1.0"
-        android:visibility="visible"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="@dimen/fub_margin"/>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/canselText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:padding="@dimen/common_space"
-        app:layout_constraintBottom_toTopOf="@id/content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolsTop"
-        tools:text="Editing message"
-        android:visibility="gone"
-        />
-    <ImageButton
-        android:id="@+id/canselButton"
-        android:contentDescription="@string/cansel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/common_space"
-        android:background="@android:color/transparent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/content"
-        app:layout_constraintBottom_toBottomOf="@+id/canselText"
-        app:srcCompat="@drawable/ic_baseline_cancel_24"
-        android:visibility="gone"
-        />
-    <ImageButton
-        android:id="@+id/save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/common_space"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/description_post_like"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:srcCompat="@drawable/ic_save_48"
-        android:visibility="visible"
 
-        />
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:visibility="visible"
-        app:constraint_referenced_ids="canselText,canselButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>
-    
-</FrameLayout>
-
 

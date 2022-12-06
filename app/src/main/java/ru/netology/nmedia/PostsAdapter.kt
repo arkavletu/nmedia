@@ -1,6 +1,7 @@
 package ru.netology.nmedia
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.PopupMenu
@@ -60,6 +61,13 @@ internal class PostsAdapter(
             binding.share.setOnClickListener {
                 listener.onShareClicked(post)
             }
+            binding.video.setOnClickListener {
+                listener.onPlayClicked(post)
+            }
+            binding.play.setOnClickListener {
+                listener.onPlayClicked(post)
+            }
+
         }
 
         fun bind(post: Post) {
@@ -73,6 +81,11 @@ internal class PostsAdapter(
                 likes.text = spellCounterOfSmth(post.countLikes)
                 share.text = spellCounterOfSmth(post.countReposts)
                 options.setOnClickListener { popupMenu.show() }
+
+                if(post.video.isNullOrBlank()) {
+                    video.visibility = View.GONE
+                    play.visibility = View.GONE
+                }
             }
         }
     }
