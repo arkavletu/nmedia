@@ -4,12 +4,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidSDK/WORK/app/src/main/res/drawable/ava.xml" value="0.1" />
+        <entry key="..\:/AndroidSDK/WORK/app/src/main/res/drawable/cansel.xml" value="0.128" />
+        <entry key="..\:/AndroidSDK/WORK/app/src/main/res/drawable/ic_baseline_cancel_24.xml" value="0.128" />
+        <entry key="..\:/AndroidSDK/WORK/app/src/main/res/drawable/ic_save_48.xml" value="0.128" />
         <entry key="..\:/AndroidSDK/WORK/app/src/main/res/drawable/options.xml" value="0.1795" />
         <entry key="..\:/AndroidSDK/WORK/app/src/main/res/drawable/post_avatar.xml" value="0.1875" />
-        <entry key="..\:/AndroidSDK/WORK/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/AndroidSDK/WORK/app/src/main/res/layout/activity_main.xml" value="0.226890756302521" />
         <entry key="..\:/AndroidSDK/WORK/app/src/main/res/layout/post.xml" value="0.19157608695652173" />
 
         <entry key="..\:/AndroidSDK/WORK/app/src/main/res/layout/post_item.xml" value="0.22" />
+        <entry key="..\:/AndroidSDK/WORK/app/src/main/res/menu/menu.xml" value="0.20416666666666666" />
         <entry key="..\:/AndroidSDK/WORK/app/src/main/res/mipmap-anydpi-v26/nmedia.xml" value="0.166" />
         <entry key="..\:/AndroidSDK/WORK/app/src/main/res/mipmap-anydpi-v26/nmedia_round.xml" value="0.166" />
       </map>

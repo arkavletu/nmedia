@@ -1,11 +1,10 @@
 package ru.netology.nmedia
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import ru.netology.nmedia.databinding.ActivityMainBinding
-import ru.netology.nmedia.databinding.PostBinding
-import java.math.RoundingMode
 
 class MainActivity : AppCompatActivity(){
     val viewModel by viewModels<PostViewModel>()
@@ -39,10 +38,48 @@ class MainActivity : AppCompatActivity(){
     }
 
 
-        val adapter = PostsAdapter(viewModel::likePost, viewModel::sharePost)
-        binding.postRecyclerView.adapter = adapter
+
+        val adapter = PostsAdapter(viewModel)
+        binding.list.adapter = adapter
         viewModel.data.observe(this){posts ->
             adapter.submitList(posts)
         }
+
+        binding.save.setOnClickListener {
+            with(binding.content) {
+                val content = text.toString()
+                viewModel.onSaveClicked(content)
+                binding.canselText.text = ""
+            }
+        }
+
+        binding.canselButton.setOnClickListener {
+            with(binding.content){
+                clearFocus()
+                hideKeyboard()
+                binding.group.visibility = View.GONE
+                viewModel.onCanselClicked()
+                binding.canselText.text = ""
+            }
+        }
+        viewModel.currentPost.observe(this){ currentPost ->
+            with(binding.content) {
+                val content = currentPost?.content
+                setText(content)
+                if(content != null) {
+                    binding.group.visibility = View.VISIBLE
+                    binding.canselText.text = "${currentPost.id}"
+                    requestFocus()
+                    showKeyboard()
+                }
+                else {
+                    clearFocus()
+                    hideKeyboard()
+                    binding.group.visibility = View.GONE
+                }
+            }
+        }
+
+
     }
 }

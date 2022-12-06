@@ -4,14 +4,16 @@ package ru.netology.nmedia
 import androidx.lifecycle.MutableLiveData
 
 class PostRepoInMemoryImpl : PostRepo {
+    private var nextId = GENERATEDAMMOUNT.toLong()
+
     override val data = MutableLiveData(
-        List(10) { index ->
+        List(GENERATEDAMMOUNT) { index ->
             Post(
                 index + 1L,
                 "Vova",
-                "Let it crash $index",
+                "Let it crash $index",// не видать
                 "29.06.2022",
-                count_reposts = 1999
+                countReposts = 1999
             )
         }
     )
@@ -23,15 +25,40 @@ class PostRepoInMemoryImpl : PostRepo {
         data.value = posts.map {
             if (it.id == postId) it.copy(
                 liked = !it.liked,
-                count_likes = if (!it.liked) 1 else 0
+                countLikes = if (!it.liked) 1 else 0
             ) else it
         }
     }
 
     override fun share(postId: Long) {
         data.value =
-            posts.map { if (it.id == postId) it.copy(count_reposts = it.count_reposts + 1) else it }
+            posts.map { if (it.id == postId) it.copy(countReposts = it.countReposts + 1) else it }
 
 
+
+    override fun delete(postId: Long) {
+        data.value = posts.filter { it.id != postId }
+    }
+
+    override fun save(post: Post) {
+        if(post.id == PostRepo.NEWPOSTID) insert(post) else update(post)
+    }
+
+
+
+    private fun update(post: Post) {
+        data.value = posts.map{
+            if (it.id == post.id) post else it
+        }
+    }
+
+    private fun insert(post: Post) {
+        data.value = listOf(post.copy(id = ++nextId)) + posts
+
+    }
+
+    private companion object{
+        const val GENERATEDAMMOUNT = 10
+    }
 
 }
